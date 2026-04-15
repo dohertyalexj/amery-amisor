@@ -1,0 +1,32 @@
+Title: Amery Ice Shelf - hot water drill borehole, AM05 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf
+
+Authors:
+  - IAN ALLISON (TECHNICAL CONTACT, INVESTIGATOR)
+  - MIKE CRAVEN (TECHNICAL CONTACT, DIF AUTHOR)
+
+Owner: Commonwealth of Australia
+
+Citation: Allison, I. and Craven, M. (2013) Amery Ice Shelf - hot water drill borehole, AM05 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf, Ver. 1,  <em>Australian Antarctic Data Centre</em> - <a href="http://dx.doi.org/doi:10.4225/15/525E224DC18AE">doi:10.4225/15/525E224DC18AE</a>, Accessed: 2020-07-02
+
+Revision Date: 2017-04-26
+
+Metadata URL: https://data.aad.gov.au/metadata/records/ASAC_1164_AM05_MicroCAT
+
+Dataset API URL: https://data.aad.gov.au/s3/api/bucket/datasets/science/ASAC_1164_AM05_MicroCAT?export=json
+
+Abstract: AM05 borehole drilled December 2009.
+
+Data being collected at annual re-visits to site.
+
+Consult Readme file for detail of data files and formats.  A word document providing further information is also available as part of the download.
+
+All of the .dat files of data can be viewed with a text editor such as Wordpad.
+
+Use Constraints: This data set conforms to the CCBY Attribution License
+                  (http://creativecommons.org/licenses/by/4.0/).
+                  
+                  Please follow instructions listed in the citation reference provided at http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=ASAC_1164_AM05_MicroCAT when using these data.
+
+ID: 3711
+Metadata ID: ASAC_1164_AM05_MicroCAT
+UUID: 24C70B98-CFEE-4522-B1B1-E4DFDC266EB9

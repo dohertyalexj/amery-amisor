@@ -1,0 +1,50 @@
+
+AMISOR borehole AM04 MICROCAT data: 11/01/2006 to 22/12/2010
+------------------------------------------------------------
+
+data from all the downloads, joined into a single file for each microcat
+(Note: for 2009/2010, updated data for cat1972 only - other 2 microcats updated
+  in 2010/2011 with 2 years' data)
+
+ascii format
+------------
+contained in column formatted files catxxxx_all.dat, where
+xxxx = microcat serial number. The columns are:
+
+1. decimal time - decimal days, where 0.0 = 0000 on January 1st 2001.
+So, for example, midday on 15th January 2001 is decimal time 14.5
+ (corrected for clock drift, if applicable)
+2. temperature (deg. C, T90)
+3. conductivity (mS/cm)
+4. pressure (dbar)
+5. salinity (PSS78)
+6. to 11. day, month, year, hour, minute, second
+ (corrected for clock drift, if applicable)
+12. decimal time - no correction for clock drift
+13. to 18. day, month, year, hour, minute, second - no correction for
+ clock drift
+
+* Note that all times are UTC.
+
+* There is a line of data for each recording interval (i.e. no gaps),
+and null data is represented by -999.0
+
+* Note: all sensor calibrations for these microcats are from February 2003 (microcats
+purchased in 2003, but deployment delayed a couple of seasons), so there may
+have been some sensor drift prior to deployment. For estimates on sensor drift, see
+the following report:
+AMERY  ICE  SHELF  BOREHOLE  MICROCAT  AND  CTD  DATA,  SEASON  2000/2001  TO  2004/2005
+-  DATA  PROCESSING  AND  QUALITY. Mark Rosenberg, ACRCRC unpublished report, June 2005.
+
+* Linear clock corrections applied are described in README files
+for each season.
+
+
+
+matlab
+------
+contained in matlab format files catxxxx_all.mat, where
+xxxx = microcat serial number. 
+
+
+

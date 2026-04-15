@@ -1,0 +1,74 @@
+
+AMISOR borehole AM06 MICROCAT data for 2012/2013 season
+-------------------------------------------------------
+
+Data from the first download.
+
+ascii format
+------------
+contained in column formatted files catxxxx_3.dat, where
+xxxx = microcat serial number. The columns are:
+
+1. decimal time - decimal days, where 0.0 = 0000 on January 1st 2001.
+So, for example, midday on 15th January 2001 is decimal time 14.5
+2. temperature (deg. C, T90)
+3. conductivity (mS/cm)
+4. pressure (dbar)
+5. salinity (PSS78)
+6. to 11. day, month, year, hour, minute, second.
+
+* Note that all times are UTC.
+
+* There is a line of data for each recording interval (i.e. no gaps),
+and null data is represented by -999.0
+
+* Clock errors were small (< 20 seconds), and no clock drift corrections have 
+been made.
+
+* Mean pressures over this latest download:
+
+cat7325 =  bad pressure sensor: p=551.3 dbar used for whole time series
+cat7324 =  679.5 dbar
+cat7323 =  790.0 dbar
+
+
+* Original pressure data for microcat 7325 are bad, and all conductivity and
+salinity data were recalculated with the single pressure value of 551.3 dbar
+i.e. the pressure immediately after deployment in January 2010.
+Note that for previous season's data for this microcat, in hindsight
+it is obvious that pressure data are bad, and for 2011/12 data the files that should be used
+are cat7325_2meanp.dat and cat7325_2meanp.mat (i.e. with data
+recalculated using the single pressure value of 551.3 dbar).
+
+
+
+matlab
+------
+contained in matlab format files catxxxx_3.mat, where
+xxxx = microcat serial number. 
+
+
+
+bad and suspect data
+--------------------
+
+* all pressure data for cat7325 are bad, and have been removed from the files
+
+* the following conductivity/salinity data spikes occur, probably due to fouling,
+are should be treated as suspect (spikes not removed from the files):
+
+microcat         decimaltime       data pt. number
+7323_3           4235.97918        7920
+7323_3           4270.83334        9593
+
+7324_3           4210.08334        6677
+7324_3           4218.02084        7058
+7324_3           4225.14584        7400
+7324_3           4225.16668        7401
+7324_3           4225.22918        7404
+7324_3           4296.20834       10811
+
+7325_3           4180.70834        5267
+
+
+

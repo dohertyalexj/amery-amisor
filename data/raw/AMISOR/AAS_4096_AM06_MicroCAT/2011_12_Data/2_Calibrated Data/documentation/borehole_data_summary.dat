@@ -1,0 +1,210 @@
+This is a summary of the borehole microcat and CTD data.
+This table current at November 2012  
+Decimal time base starts at start of year 2001.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Microcat
+-----------
+           download
+borehole    season     download       cats            data dates        comment
+
+AM02       2001/2002   1a       1623,1624,1174  06/01/2001 to 14/02/2002    -
+
+AM02       2001/2002   first    1623,1624,1174  06/01/2001 to 06/02/2002    1
+
+AM02       2002/2003     -      1623,1624,1174              -               2
+
+AM02       2003/2004   third    1623,1624,1174  05/02/2003 to 28/12/2003    3
+
+AM02       2004/2005   fourth   1623,1624,1174  28/12/2003 to 26/12/2004    4
+
+AM02       2005/2006   fifth    1623,1624,1174  27/12/2004 to 21/02/2006    5
+
+AM02       2006/2007   sixth    1623,1624,1174  22/02/2006 to 16/12/2006    6
+
+AM02       2007/2008     -      1623,1624,1174              -               7
+
+comment 1: deployed Jan 2001; Al did small download in Feb 2001, then big
+           download in Feb 2002 - this data is both; some time discontinuities
+           in the first 5 weeks; clocks probably not reset
+comment 2: microcats hadn't started logging, so no data for that year
+           (Feb 2002 to Feb 2003); clocks probably not reset
+comment 3: downloaded by Al on 28th Dec 2003; clocks all reset to GPS time
+comment 4: downloaded by Dave Rasch on 26th Dec 2004; clocks all reset to
+           GPS time
+comment 5: downloaded by Dave Rasch on 21st Feb 2006; clocks all reset to
+           GPS time
+comment 6: downloaded by Dave Rasch 15th-16th Dec 2006; clocks all reset to
+           GPS time
+comment 7: all batteries flat, no data could be downloaded - so it's the
+           end of AM02 microcats
+
+
+           download
+borehole    season     download       cats            data dates        comment 
+
+AM01       2001/2002   1a       1969,1970,1971  15/01/2002 to 23/01/2002    1
+
+AM01       2002/2003   1b       1969,1970,1971  23/01/2002 to 17/11/2002    2
+
+AM01       2002/2003   1c       1969,1970,1971  18/11/2002 to 26/01/2003    3
+
+AM01       2001/2003   first    1969,1970,1971  15/01/2002 to 26/01/2003    4
+
+AM01       2003/2004   second   1969,1970,1971  26/01/2003 to 26/12/2003    5
+
+AM01       2004/2005   third    1969,1970,1971  26/12/2003 to 30/12/2004    6
+
+AM01       2005/2006     -      1969,1970,1971              -               7
+
+AM01       2006/2007   fifth    1969,1970,1971  31/12/2004 to 06/12/2006    8
+
+AM01       2007/2008   sixth    1969,1970,1971  07/12/2006 to 07/01/2008    9
+
+AM01       2008/2009   seventh  1969 only       07/01/2008 to 07/01/2009    10
+
+comment 1: deployed Jan 2002; Al did small 8 day download in Jan 2002;
+           clocks not reset
+comment 2: downloaded by Al on 17th Nov 2002; p sensor bad for all 3 microcats;
+           clocks not reset
+comment 3: downloaded by Al on 26th Jan 2003 (~2 months of data);
+           clocks not reset
+comment 4: merged these 3 downloads into final files *.dat in directory
+           first_download
+comment 5: downloaded by Al on 26/12/2003; clocks all reset to GPS time
+comment 6: downloaded by Dave Rasch on 30/12/2004; assume that clocks all 
+           reset to GPS time
+comment 7: no time to download microcats at the site; data will have to be
+           downloaded next season, making 2 years' worth of new data
+comment 8: downloaded by Dave Rasch on 06/12/2006; clocks all reset to
+           GPS time; 2 years' worth of data
+comment 9: downloaded by Mark Milnes on 07/01/2008; clocks all reset to 
+           GPS time
+comment 10: cat1969 only, batteries flat for other two microcats; data for
+           cat1969 looking increasingly suspect; downloaded by Mark Milnes 
+           on 07/01/2009; clock reset to GPS time; probably the end of
+           AM01 microcats
+
+
+           download
+borehole    season     download       cats            data dates        comment 
+
+AM03       2005/2006     -      4055,4054,3883              -               1
+
+AM03       2006/2007   first    4055,4054,3883  27/12/2005 to 03/12/2006    2
+
+AM03       2007/2008   second   4055,4054,3883  04/12/2006 to 04/01/2008    3
+
+AM03       2008/2009   third    4055,4054,3883  04/01/2008 to 27/01/2009    4
+
+AM03       2009/2010   fourth   4055,4054,3883  28/01/2009 to 29/01/2010    5
+
+AM03       2010/2011   fifth    4055,4054,3883  29/01/2010 to 22/12/2010    6
+
+AM03       2011/2012   sixth    4055,4054       09/01/2011 to 11/07/2011    7
+
+comment 1: deployed 17th Dec 2005; no data download; clocks set to GPS time  
+comment 2: downloaded by Dave Rasch on 03/12/2006; clocks all reset to
+           GPS time
+comment 3: downloaded by Mark Milnes on 04/01/2008; clocks all reset to
+           GPS time
+comment 4: downloaded by Mark Milnes on 27/01/2009; clocks all reset to
+           GPS time
+comment 5: downloaded by Adam Christensen on 29/01/2010; clocks all reset to
+           GPS time
+comment 6: downloaded by Adam Christensen on 22/12/2010; clocks all reset to
+           GPS time
+comment 7: downloaded by Adam Christensen on 18/01/2012; cat4054 data only up 
+           to 03/07/2012; no cat3883 data (batteries flat); assuming clocks 
+           reset to GPS time (no field notes to confirm)
+
+
+           download
+borehole    season     download       cats            data dates        comment 
+
+AM04       2005/2006   1a       1972,1973,1974  11/01/2006 to 16/01/2006    1
+
+AM04       2006/2007   1b       1972,1973,1974  16/01/2006 to 25/11/2006    2
+
+AM04       2006/2007   first    1972,1973,1974  11/01/2006 to 25/11/2006    3
+
+AM04       2007/2008   second   1972,1973,1974  25/11/2006 to 05/01/2008    4
+
+AM04       2008/2009   third    1972,1973,1974  05/01/2008 to 30/01/2009    5
+
+AM04       2009/2010   fourth   1972            30/01/2009 to 04/03/2010    6
+
+AM04       2010/2011   fifth    1972,1973,1974  28/01/2010 to 22/12/2010    7
+
+comment 1: deployed 10th Jan 2006; Dave did small 5 day download in Jan 2006;
+           clocks reset to GPS time
+comment 2: downloaded by Dave Rasch on 25/11/2006; clocks all reset to
+           GPS time
+comment 3: merged downloads 1a and 1b into final files *.dat in directory
+           first_download
+comment 4: downloaded by Mark Milnes on 05/01/2008; clocks all reset to
+           GPS time
+comment 5: downloaded by Mark Milnes on 28/01/2009 (cat1974) and 30/01/2009
+           (cat1972 and cat1973); clocks all reset to GPS time
+comment 6: downloaded by Adam Christensen on 04/03/2010 (cat1972 only); no time
+           to download cat1973 and cat1974, so there'll be 2 years' worth of data
+           at the next download; cat1972 clock reset to GPS time (unknown
+           if other 2 cats had clocks reset, will find out at the next download)
+comment 7: downloaded by Adam Christensen on 22/12/2010; latest year of data
+           for cat1972, 2 years' of data for other 2 cats; clock check info lost,
+           unknown if clocks reset to GPS time; data for cat1972 after 04/03/2010
+           look suspect
+
+
+           download
+borehole    season     download       cats            data dates        comment 
+
+AM05       2010/2011   first    7327,7326,7322  19/12/2009 to 08/01/2011    1
+
+AM05       2011/2012   second   7327,7326,7322  05/02/2011 to 24/02/2012    2
+
+comment 1: deployed 14th Dec 2009; downloaded by Adam Christensen on 08/01/2011;
+           clock check info lost; clocks all reset to GPS time; strange pressure
+           drift for shallowest cat
+comment 2: downloaded by Adam Christensen on 18/01/2012 and then 24/02/2012; 
+           pressure sensor bad for shallowest cat; clocks all reset to GPS time
+
+
+           download
+borehole    season     download       cats            data dates        comment 
+
+AM06       2010/2011   first    7325,7324,7323  07/01/2010 to 08/01/2011    1
+
+AM06       2011/2012   second   7325,7324,7323  05/02/2011 to 24/02/2012    2
+
+comment 1: deployed 4th Jan 2010; downloaded by Adam Christensen on 08/01/2011;
+           clocks all reset to GPS time; strange pressure drift for shallowest cat
+comment 2: downloaded by Adam Christensen on 22/01/2012 and then 24/02/2012; 
+           strange pressure drift for shallowest cat; clocks all reset to GPS time
+
+
+
+2. FSI CTD
+----------
+                                                                   cal. cruise
+borehole  season       position          # of CTD's  CTD  dates    & CTD nos.
+
+AM02     2000/2001  69d42.8'S, 72d38.4'E   8        01-05/01/2001  au0106, 94,95
+
+AM01     2001/2002  69d26.5'S, 71d25.0'E   7        10-14/01/2002  au0207, 53-55
+
+         2002/2003   no AMISOR operation other than Al downloading instruments
+
+AM01b    2003/2004  69d25.9'S, 71d26.8'E   1        24/12/2003          -
+
+         2004/2005   no AMISOR operation other than Dave downloading instruments
+
+AM03     2005/2006  70d33.67'S,70d19.93'E  2        12-15/12/2005  au0603, 119,120
+
+AM04     2005/2006  69d53.97'S,70d17.42'E  1        09/01/2006     au0603, 119,120
+
+AM05     2009/2010  70d13.9'S, 69d40.5'E   8        09-14/12/2009    -             
+
+AM06    2009/2010 70d14.165'S,71d21.829'E  5        01-03/01/2010    -             
+
+

@@ -1,0 +1,81 @@
+AM03
+----
+rename raw files to cat054.god and cat055.god
+catgodfixp.f   input file god.in (with list of *.god files)
+               output files are *.godfix
+
+catfixp.f      input: godfix.in,1800.,8,192,3652
+               output files are *.fix (remove last line of cat055.fix)
+
+catstretchamisorp.f  input catstretch.in,1800.,3600.55625 
+                     output files are *.dat
+                     manually fix "24 00 00" cases
+                     renamed to final *.dat files
+
+catptomat.m          input *.dat files
+                     output files *.mat
+
+catpplot.m     for plots
+
+
+
+
+AM05
+----
+rename raw files to cat322.god, cat326.god and cat327.god
+Need 2 directories: for the year's download (download a)
+                    and for the extra month's download (download b)
+Remove lat fewlines of bad data for cat326 and 327 in the year's download
+
+catgodfixp.f   as above for AM03, for both download a and b
+               add in missing comma in cat322.godfix at 2330 on 17/6/11
+
+catfixp.f   for download a: godfix.in,1800.,35,383,3652
+            for download b: godfix.in,1800.,18,55,4017
+            output *.fix for each download
+
+fixing cat327 for bad pressure:
+catfixpfix.f  download a: godfix.in,1800,35,383,3652,pref.in
+              download b: godfix.in,1800,18,55,4017,pref.in
+           rename output file in each case to cat327meanp.fix
+
+   concatenate the *.fix files for each instruments fromn the 2 downloads
+
+catptomat.m and catpplot.m as above for AM03
+
+
+
+
+AM06
+----
+rename raw files to cat323.god, cat324.god and cat325.god
+Need 2 directories: for the year's download (download a)
+                    and for the extra month's download (download b)
+Remove lat fewlines of bad data for cat324 and 325 in the year's download
+
+catgodfixp.f   as above for AM03, for both download a and b
+               fix bad line in cat323 at 1330 on 15/12/11
+               fix bad times in cat324 at 0200 and 0230 on 30/10/2011
+
+catfixp.f   for download a: godfix.in,1800.,35,387,3652
+            for download b: godfix.in,1800.,22,55,4017
+            output *.fix for each download
+
+
+   concatenate the *.fix files for each instruments fromn the 2 downloads
+
+catptomat.m and catpplot.m as above for AM03
+
+fixing cat7325 p,c and s data:
+correctam05am06_2.f   a=-0.0404, b=691.3428, use set p level as 551.261
+                      so padd=8.773 dbar
+     output is cat7325_2.new, renamed to *.dat
+     (originals renamed to *uncorrected.*)
+
+Also did a version cat7325_2meanp, as per cat327 in AM05.
+
+catfixpfix.f  download a: godfix.in,1800,35,383,3652,pref.in
+              download b: godfix.in,1800,18,55,4017,pref.in
+           rename output file in each case to cat327meanp.fix
+
+

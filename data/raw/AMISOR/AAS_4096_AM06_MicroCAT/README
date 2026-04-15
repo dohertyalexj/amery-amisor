@@ -1,0 +1,36 @@
+Title: Amery Ice Shelf - hot water drill borehole, AM06 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf - 2011-2013 data
+
+Authors:
+  - STEFAN VOGEL (TECHNICAL CONTACT, INVESTIGATOR)
+  - DAVE CONNELL (TECHNICAL CONTACT, DIF AUTHOR)
+
+Owner: Commonwealth of Australia
+
+Citation: Vogel, S.W. (2015) Amery Ice Shelf - hot water drill borehole, AM06 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf - 2011-2013 data, Ver. 1,  <em>Australian Antarctic Data Centre</em> - <a href="https://data.aad.gov.au/metadata/records/AAS_4096_AM06_MicroCAT">https://data.aad.gov.au/metadata/records/AAS_4096_AM06_MicroCAT</a>, Accessed: 2020-07-02
+
+Revision Date: 2017-04-26
+
+Metadata URL: https://data.aad.gov.au/metadata/records/AAS_4096_AM06_MicroCAT
+
+Dataset API URL: https://data.aad.gov.au/s3/api/bucket/datasets/science/AAS_4096_AM06_MicroCAT?export=json
+
+Abstract: AM06 borehole drilled January 2010.
+
+Data being collected at annual re-visits to site.
+
+Consult Readme file for detail of data files and formats.  A word document providing further information is also available as part of the download.
+
+All of the .dat files of data can be viewed with a text editor such as Wordpad.
+
+2012-2013 data may be final data from the unit owing to battery failure.
+
+The original project for this dataset was ASAC 1164, but recent data fall under the auspices of project AAS 4096.
+
+Use Constraints: This data set conforms to the CCBY Attribution License
+                  (http://creativecommons.org/licenses/by/4.0/).
+                  
+                  Please follow instructions listed in the citation reference provided at http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=AAS_4096_AM06_MicroCAT when using these data.
+
+ID: 4012
+Metadata ID: AAS_4096_AM06_MicroCAT
+UUID: AAF44A65-0916-47DC-8A0F-D1689DC0BA8C

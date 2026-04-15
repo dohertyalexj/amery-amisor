@@ -1,0 +1,40 @@
+Title: Amery Ice Shelf - hot water drill borehole, AM02 CTD mooring data
+
+Authors:
+  - IAN ALLISON (INVESTIGATOR, TECHNICAL CONTACT)
+  - MIKE CRAVEN (TECHNICAL CONTACT, DIF AUTHOR)
+
+Owner: Commonwealth of Australia
+
+Citation: Allison, I. and Craven, M. (2013) Amery Ice Shelf - hot water drill borehole, AM02 CTD mooring data, Ver. 2,  <em>Australian Antarctic Data Centre</em> - <a href="http://dx.doi.org/doi:10.4225/15/525E0DAF38C7B">doi:10.4225/15/525E0DAF38C7B</a>, Accessed: 2020-07-02
+
+Revision Date: 2019-03-14
+
+Metadata URL: https://data.aad.gov.au/metadata/records/ASAC_1164_AM02_MicroCAT
+
+Dataset API URL: https://data.aad.gov.au/s3/api/bucket/datasets/science/ASAC_1164_AM02_MicroCAT?export=json
+
+Abstract: AM02 borehole drilled December 2000.
+
+3 x Seabird 37IM CTD units moored long term in ocean cavity beneath the shelf.
+
+Data for 2001, and 2003 in 0.5 hr sampling.
+
+Data for 2002 not recorded.
+
+Consult Readme file for detail of data files and formats.  A word document providing further information is also available as part of the download.
+
+All of the .dat files of data can be viewed with a text editor such as Wordpad.
+
+New information added:
+
+July 2006,
+September 2009.
+
+Use Constraints: This data set conforms to the CCBY Attribution License (http://creativecommons.org/licenses/by/4.0/).
+
+Please follow instructions listed in the citation reference provided at http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=ASAC_1164_AM02_MicroCAT when using these data.
+
+ID: 3708
+Metadata ID: ASAC_1164_AM02_MicroCAT
+UUID: 8A933057-9C18-44E0-AD3A-04575CA7D3C8

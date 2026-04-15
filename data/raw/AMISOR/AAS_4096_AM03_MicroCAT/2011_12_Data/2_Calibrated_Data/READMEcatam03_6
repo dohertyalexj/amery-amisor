@@ -1,0 +1,57 @@
+
+AMISOR borehole AM03 MICROCAT data for 2011/2012 season
+-------------------------------------------------------
+
+Data from the sixth download.
+
+ascii format
+------------
+contained in column formatted files catxxxx_6.dat, where
+xxxx = microcat serial number. The columns are:
+
+1. decimal time - decimal days, where 0.0 = 0000 on January 1st 2001.
+So, for example, midday on 15th January 2001 is decimal time 14.5
+2. temperature (deg. C, T90)
+3. conductivity (mS/cm)
+4. pressure (dbar)
+5. salinity (PSS78)
+6. to 11. day, month, year, hour, minute, second.
+
+* Note that all times are UTC.
+
+* There is a line of data for each recording interval (i.e. no gaps),
+and null data is represented by -999.0
+
+* There are no data for cat3883 - assumed flat battery.
+
+* For cat4054, there are conductivity/salinity data spikes at the following times:
+(note: not removed from the data)
+1630 to 1800 on 10/01/2011
+1600 to 1800 on 24/01/2011
+1330 on 13/03/2011
+
+* For cat4054, there is a temperature (and therefore salinity) data spikes at the following time:
+(note: not removed from the data)
+1930 on 25/05/2011
+
+* For cat4055, there are conductivity/salinity data spikes at the following times:
+(note: not removed from the data)
+1100 to 1900 on 07/02/2011
+
+* Linear clock correction applied to "compress" times, to correct
+for clock drift. 
+
+* Mean pressures over this latest download:
+
+cat4055 =  659.2 dbar
+cat4054 =  869.9 dbar
+cat3883 - no data
+
+
+matlab
+------
+contained in matlab format files catxxxx_6.mat, where
+xxxx = microcat serial number. 
+
+
+

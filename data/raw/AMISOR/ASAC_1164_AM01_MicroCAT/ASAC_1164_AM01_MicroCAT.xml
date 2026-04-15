@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DIF xmlns="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:dif="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/ http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/dif_v9.9.3.xsd">
+  <Entry_ID>ASAC_1164_AM01_MicroCAT</Entry_ID>
+  <Entry_Title>Amery Ice Shelf - hot water drill borehole, AM01 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf</Entry_Title>
+  <Data_Set_Citation>
+    <Dataset_Creator>Allison, I. and Craven, M.</Dataset_Creator>
+    <Dataset_Title>Amery Ice Shelf - hot water drill borehole, AM01 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf</Dataset_Title>
+    <Dataset_Series_Name>CAASM Metadata</Dataset_Series_Name>
+    <Dataset_Release_Date>2013-10-16</Dataset_Release_Date>
+    <Dataset_Publisher>Australian Antarctic Data Centre</Dataset_Publisher>
+    <Version>1</Version>
+    <Dataset_DOI>doi:10.4225/15/525E08116F69D</Dataset_DOI>
+    <Online_Resource>https://data.aad.gov.au/metadata/records/ASAC_1164_AM01_MicroCAT</Online_Resource>
+  </Data_Set_Citation>
+  <Personnel>
+    <Role>INVESTIGATOR</Role>
+    <Role>TECHNICAL CONTACT</Role>
+    <First_Name>IAN</First_Name>
+    <Last_Name>ALLISON</Last_Name>
+    <Email>ian.allison@aad.gov.au</Email>
+    <Phone>+61 3 6226 7648</Phone>
+    <Fax>+61 3 6226 7650</Fax>
+    <Contact_Address>
+      <Address>Australian Antarctic Division</Address>
+      <Address>203 Channel Highway</Address>
+      <City>Kingston</City>
+      <Province_or_State>Tasmania</Province_or_State>
+      <Postal_Code>7050</Postal_Code>
+      <Country>Australia</Country>
+    </Contact_Address>
+  </Personnel>
+  <Personnel>
+    <Role>TECHNICAL CONTACT</Role>
+    <Role>DIF AUTHOR</Role>
+    <First_Name>MIKE</First_Name>
+    <Last_Name>CRAVEN</Last_Name>
+    <Email>m.craven@utas.edu.au</Email>
+    <Phone>+61 3 6226 7876</Phone>
+    <Fax>+61 3 6226 6902</Fax>
+    <Contact_Address>
+      <Address>203 Channel Highway</Address>
+      <Address>Australian Antarctic Division</Address>
+      <City>Kingston</City>
+      <Province_or_State>Tasmania</Province_or_State>
+      <Postal_Code>7050</Postal_Code>
+      <Country>Australia</Country>
+    </Contact_Address>
+  </Personnel>
+  <Discipline>
+    <Discipline_Name>EARTH SCIENCE</Discipline_Name>
+  </Discipline>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>OCEANS</Topic>
+    <Term>OCEAN PRESSURE</Term>
+    <Variable_Level_1>WATER PRESSURE</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>OCEANS</Topic>
+    <Term>OCEAN TEMPERATURE</Term>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>OCEANS</Topic>
+    <Term>SALINITY/DENSITY</Term>
+    <Variable_Level_1>CONDUCTIVITY</Variable_Level_1>
+  </Parameters>
+  <ISO_Topic_Category>OCEANS</ISO_Topic_Category>
+  <Keyword>PRESSURE</Keyword>
+  <Keyword>AMERY ICE SHELF</Keyword>
+  <Keyword>HOT WATER DRILL</Keyword>
+  <Keyword>AMISOR</Keyword>
+  <Keyword>SALINITY</Keyword>
+  <Keyword>TEMPERATURE</Keyword>
+  <Sensor_Name>
+    <Short_Name>CTD</Short_Name>
+    <Long_Name>Conductivity, Temperature, Depth</Long_Name>
+  </Sensor_Name>
+  <Source_Name>
+    <Short_Name>GROUND-BASED OBSERVATIONS</Short_Name>
+  </Source_Name>
+  <Source_Name>
+    <Short_Name>FIELD INVESTIGATION</Short_Name>
+  </Source_Name>
+  <Temporal_Coverage>
+    <Start_Date>2002-01-15</Start_Date>
+    <Stop_Date>2009-03-31</Stop_Date>
+  </Temporal_Coverage>
+  <Data_Set_Progress>COMPLETE</Data_Set_Progress>
+  <Spatial_Coverage>
+    <Southernmost_Latitude>-69.44</Southernmost_Latitude>
+    <Northernmost_Latitude>-69.44</Northernmost_Latitude>
+    <Westernmost_Longitude>71.42</Westernmost_Longitude>
+    <Easternmost_Longitude>71.42</Easternmost_Longitude>
+  </Spatial_Coverage>
+  <Location>
+    <Location_Category>OCEAN</Location_Category>
+    <Location_Type>SOUTHERN OCEAN</Location_Type>
+  </Location>
+  <Location>
+    <Location_Category>CONTINENT</Location_Category>
+    <Location_Type>ANTARCTICA</Location_Type>
+  </Location>
+  <Location>
+    <Location_Category>GEOGRAPHIC REGION</Location_Category>
+    <Location_Type>POLAR</Location_Type>
+  </Location>
+  <Quality>See Readme file and calibration document ... SeaBird MicroCAT CTD units placed at three depths in the 360 m deep ocean cavity beneath the ice shelf (20 m below ice-water interface, mid cavity, and 40 m up from sea bed) ... ongoing recording until batteries fail, expected lifetime is 3 years ... problem with failures in the pressure housings, but salinity and temperature data ok.</Quality>
+  <Access_Constraints>These data are publicly available for download at the provided URL.</Access_Constraints>
+  <Use_Constraints>This data set conforms to the CCBY Attribution License (http://creativecommons.org/licenses/by/4.0/).
+
+Please follow instructions listed in the citation reference provided at http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=ASAC_1164_AM01_MicroCAT when using these data.</Use_Constraints>
+  <Data_Set_Language>English</Data_Set_Language>
+  <Originating_Center>Australian Antarctic Division</Originating_Center>
+  <Data_Center>
+    <Data_Center_Name>
+      <Short_Name>AU/AADC</Short_Name>
+      <Long_Name>Australian Antarctic Data Centre, Australia</Long_Name>
+    </Data_Center_Name>
+    <Data_Center_URL>http://data.aad.gov.au</Data_Center_URL>
+    <Personnel>
+      <Role>DATA CENTER CONTACT</Role>
+      <First_Name>DATA OFFICER</First_Name>
+      <Last_Name>AADC</Last_Name>
+      <Email>metadata@aad.gov.au</Email>
+      <Phone>+61 3 6232 3244</Phone>
+      <Fax>+61 3 6232 3351</Fax>
+      <Contact_Address>
+        <Address>Australian Antarctic Division</Address>
+        <Address>203 Channel Highway</Address>
+        <City>Kingston</City>
+        <Province_or_State>Tasmania</Province_or_State>
+        <Postal_Code>7050</Postal_Code>
+        <Country>Australia</Country>
+      </Contact_Address>
+    </Personnel>
+  </Data_Center>
+  <Distribution>
+    <Distribution_Media>HTTP</Distribution_Media>
+    <Distribution_Size>5,499 kb</Distribution_Size>
+    <Distribution_Format>text, .dat, word</Distribution_Format>
+    <Fees>free</Fees>
+  </Distribution>
+  <Summary>
+    <Abstract>AM01 borehole drilled January 2002.
+
+Data being collected at annual re-visits to site.
+
+Consult Readme file for detail of data files and formats.  A word document providing further information is also available as part of the download.
+
+All of the .dat files of data can be viewed with a text editor such as Wordpad.
+
+New information added:
+
+July 2006,
+September 2009.</Abstract>
+  </Summary>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>GET DATA</Type>
+    </URL_Content_Type>
+    <URL>https://data.aad.gov.au/eds/3707/download</URL>
+    <Description>Download point for the data</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>PROJECT HOME PAGE</Type>
+    </URL_Content_Type>
+    <URL>https://secure3.aad.gov.au/proms/public/projects/report_project_public.cfm?project_no=1164</URL>
+    <Description>Public information for ASAC project 1164</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>VIEW RELATED INFORMATION</Type>
+    </URL_Content_Type>
+    <URL>http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=ASAC_1164_AM01_MicroCAT</URL>
+    <Description>Citation reference for this metadata record and dataset</Description>
+  </Related_URL>
+  <Parent_DIF>ASAC_1164_AM01</Parent_DIF>
+  <IDN_Node>
+    <Short_Name>AMD</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>CEOS</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>AMD/AU</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>ACE/CRC</Short_Name>
+  </IDN_Node>
+  <Originating_Metadata_Node>AADC</Originating_Metadata_Node>
+  <Metadata_Name>CEOS IDN DIF</Metadata_Name>
+  <Metadata_Version>VERSION 9.9.3</Metadata_Version>
+  <DIF_Creation_Date>2004-09-30</DIF_Creation_Date>
+  <Last_DIF_Revision_Date>2019-03-13</Last_DIF_Revision_Date>
+  <DIF_Revision_History>2008-07-29 - dataset updated (Mike Craven supplied a newer version).  Old dataset was archived.
+2009-10-16 - record updated by Dave Connell after Mike Craven sent through some data updates in September.
+2013-10-16 - record updated by Dave Connell after Mike Craven sent some updated documents and requested a DOI.
+2015-02-23 - record updated by Dave Connell - basic updates.
+2019-03-13 - record updated by Dave Connell for ISO compliance.</DIF_Revision_History>
+  <Extended_Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.uuid</Name>
+      <Value>33c2b5ae-fcbf-492d-b7b9-ef6370d92279</Value>
+    </Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.extraction_date</Name>
+      <Value>2019-03-13 16:16:48</Value>
+    </Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.keyword_version</Name>
+      <Value>8.6</Value>
+    </Metadata>
+  </Extended_Metadata>
+</DIF>

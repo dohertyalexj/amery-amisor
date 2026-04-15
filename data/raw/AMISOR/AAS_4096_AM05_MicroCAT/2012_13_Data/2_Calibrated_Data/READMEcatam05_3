@@ -1,0 +1,64 @@
+
+AMISOR borehole AM05 MICROCAT data for 2012/2013 season
+-------------------------------------------------------
+
+Data from the third download.
+
+ascii format
+------------
+contained in column formatted files catxxxx_3.dat, where
+xxxx = microcat serial number. The columns are:
+
+1. decimal time - decimal days, where 0.0 = 0000 on January 1st 2001.
+So, for example, midday on 15th January 2001 is decimal time 14.5
+2. temperature (deg. C, T90)
+3. conductivity (mS/cm)
+4. pressure (dbar)
+5. salinity (PSS78)
+6. to 11. day, month, year, hour, minute, second.
+
+* Note that all times are UTC.
+
+* There is a line of data for each recording interval (i.e. no gaps),
+and null data is represented by -999.0
+
+* Clock errors were small (< 20 seconds), and no clock drift corrections have 
+been made.
+
+* Mean pressures over this latest download (including all pressure steps):
+
+cat7327 =  580.2 dbar (i.e. point value immediately after deployment in December 2009)
+cat7326 =  701.5 dbar
+cat7322 =  838.9 dbar
+
+* The pressure steps appear to be real.
+
+* Original pressure data for microcat 7327 are bad. All conductivity and
+salinity values are recalculated using a constant pressure value of 580.2 dbar
+(the value immediately after deployment in December 2009).  Unexpected salinity/conductivity trends
+are evident in the recalculated data, most likely related to real values measured by a frozen-in 
+instrument. Note that the other 2 microcats show rapid pressure change events - with no
+pressure data for cat7327, it is unknown if this instrument underwent the same changes. As a
+result, there may be a further inaccuracy in the recalculated salinity data for cat7327
+of up to 0.03 (PSS78) (corresponding to pressure out by 50 dbar).
+
+
+matlab
+------
+contained in matlab format files catxxxx_3.mat, where
+xxxx = microcat serial number. 
+
+
+
+bad and suspect data
+--------------------
+
+* all pressure data for cat7327 are bad, and have been removed from the files
+
+* the following temperature/salinity data spikes occur and
+should be treated as suspect (spikes not removed from the files):
+
+microcat         decimaltime       data pt. number
+7326_3           4077.04168         291
+
+

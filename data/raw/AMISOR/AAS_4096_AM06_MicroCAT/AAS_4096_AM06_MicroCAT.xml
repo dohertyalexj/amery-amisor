@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DIF xmlns="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:dif="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/ http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/dif_v9.9.3.xsd">
+  <Entry_ID>AAS_4096_AM06_MicroCAT</Entry_ID>
+  <Entry_Title>Amery Ice Shelf - hot water drill borehole, AM06 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf - 2011-2013 data</Entry_Title>
+  <Data_Set_Citation>
+    <Dataset_Creator>Vogel, S.W.</Dataset_Creator>
+    <Dataset_Title>Amery Ice Shelf - hot water drill borehole, AM06 Seabird MicroCAT CTD moorings at three depths in ocean cavity beneath the shelf - 2011-2013 data</Dataset_Title>
+    <Dataset_Series_Name>CAASM Metadata</Dataset_Series_Name>
+    <Dataset_Release_Date>2015-01-28</Dataset_Release_Date>
+    <Dataset_Publisher>Australian Antarctic Data Centre</Dataset_Publisher>
+    <Version>1</Version>
+    <Online_Resource>https://data.aad.gov.au/metadata/AAS_4096_AM06_MicroCAT</Online_Resource>
+  </Data_Set_Citation>
+  <Personnel>
+    <Role>INVESTIGATOR</Role>
+    <Role>TECHNICAL CONTACT</Role>
+    <First_Name>STEFAN</First_Name>
+    <Middle_Name>W</Middle_Name>
+    <Last_Name>VOGEL</Last_Name>
+    <Contact_Address>
+      <Address>ACE CRC</Address>
+      <Address>Private Bag 80</Address>
+      <City>Hobart</City>
+      <Province_or_State>Tasmania</Province_or_State>
+      <Postal_Code>7001</Postal_Code>
+      <Country>Australia</Country>
+    </Contact_Address>
+  </Personnel>
+  <Personnel>
+    <Role>TECHNICAL CONTACT</Role>
+    <Role>DIF AUTHOR</Role>
+    <First_Name>DAVE</First_Name>
+    <Middle_Name>J.</Middle_Name>
+    <Last_Name>CONNELL</Last_Name>
+    <Email>dave.connell@aad.gov.au</Email>
+    <Phone>+61 3 6232 3244</Phone>
+    <Contact_Address>
+      <Address>Australian Antarctic Division</Address>
+      <Address>203 Channel Highway</Address>
+      <City>Kingston</City>
+      <Province_or_State>Tasmania</Province_or_State>
+      <Postal_Code>7050</Postal_Code>
+      <Country>Australia</Country>
+    </Contact_Address>
+  </Personnel>
+  <Discipline>
+    <Discipline_Name>EARTH SCIENCE</Discipline_Name>
+  </Discipline>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>CRYOSPHERE</Topic>
+    <Term>GLACIERS/ICE SHEETS</Term>
+    <Variable_Level_1>ICE SHEETS</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>TERRESTRIAL HYDROSPHERE</Topic>
+    <Term>GLACIERS/ICE SHEETS</Term>
+    <Variable_Level_1>ICE SHEETS</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>OCEANS</Topic>
+    <Term>OCEAN PRESSURE</Term>
+    <Variable_Level_1>WATER PRESSURE</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>OCEANS</Topic>
+    <Term>OCEAN TEMPERATURE</Term>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>OCEANS</Topic>
+    <Term>SALINITY/DENSITY</Term>
+    <Variable_Level_1>CONDUCTIVITY</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>CRYOSPHERE</Topic>
+    <Term>GLACIERS/ICE SHEETS</Term>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>TERRESTRIAL HYDROSPHERE</Topic>
+    <Term>GLACIERS/ICE SHEETS</Term>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>CRYOSPHERE</Topic>
+    <Term>GLACIERS/ICE SHEETS</Term>
+    <Variable_Level_1>ICE SHELVES</Variable_Level_1>
+  </Parameters>
+  <ISO_Topic_Category>OCEANS</ISO_Topic_Category>
+  <Keyword>AMERY ICE SHELF</Keyword>
+  <Keyword>HOT WATER DRILL</Keyword>
+  <Keyword>AMISOR</Keyword>
+  <Keyword>PRESSURE</Keyword>
+  <Keyword>SALINITY</Keyword>
+  <Keyword>TEMPERATURE</Keyword>
+  <Sensor_Name>
+    <Short_Name>CTD</Short_Name>
+    <Long_Name>Conductivity, Temperature, Depth</Long_Name>
+  </Sensor_Name>
+  <Source_Name>
+    <Short_Name>GROUND-BASED OBSERVATIONS</Short_Name>
+  </Source_Name>
+  <Source_Name>
+    <Short_Name>FIELD INVESTIGATION</Short_Name>
+  </Source_Name>
+  <Temporal_Coverage>
+    <Start_Date>2011-07-01</Start_Date>
+    <Stop_Date>2013-06-30</Stop_Date>
+  </Temporal_Coverage>
+  <Data_Set_Progress>COMPLETE</Data_Set_Progress>
+  <Spatial_Coverage>
+    <Southernmost_Latitude>-70.2428</Southernmost_Latitude>
+    <Northernmost_Latitude>-70.2428</Northernmost_Latitude>
+    <Westernmost_Longitude>71.3679</Westernmost_Longitude>
+    <Easternmost_Longitude>71.3679</Easternmost_Longitude>
+  </Spatial_Coverage>
+  <Location>
+    <Location_Category>OCEAN</Location_Category>
+    <Location_Type>SOUTHERN OCEAN</Location_Type>
+  </Location>
+  <Location>
+    <Location_Category>CONTINENT</Location_Category>
+    <Location_Type>ANTARCTICA</Location_Type>
+  </Location>
+  <Location>
+    <Location_Category>GEOGRAPHIC REGION</Location_Category>
+    <Location_Type>POLAR</Location_Type>
+  </Location>
+  <Quality>See Readme file and calibration document ... SeaBird MicroCAT CTD units placed at three depths in the 400 m deep ocean cavity beneath the ice shelf ... ongoing recording until batteries fail, expected lifetime is 3-5 years ...   
+
+Minimum and maximum depths provided in spatial coverage are approximate only.</Quality>
+  <Access_Constraints>These data are publicly available for download at the provided URL.</Access_Constraints>
+  <Use_Constraints>This data set conforms to the CCBY Attribution License
+(http://creativecommons.org/licenses/by/4.0/).
+
+Please follow instructions listed in the citation reference provided at http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=AAS_4096_AM06_MicroCAT when using these data.</Use_Constraints>
+  <Data_Set_Language>English</Data_Set_Language>
+  <Originating_Center>Australian Antarctic Division</Originating_Center>
+  <Data_Center>
+    <Data_Center_Name>
+      <Short_Name>AU/AADC</Short_Name>
+      <Long_Name>Australian Antarctic Data Centre, Australia</Long_Name>
+    </Data_Center_Name>
+    <Data_Center_URL>http://data.aad.gov.au</Data_Center_URL>
+    <Personnel>
+      <Role>DATA CENTER CONTACT</Role>
+      <First_Name>DATA OFFICER</First_Name>
+      <Last_Name>AADC</Last_Name>
+      <Email>metadata@aad.gov.au</Email>
+      <Phone>+61 3 6232 3244</Phone>
+      <Contact_Address>
+        <Address>Australian Antarctic Division</Address>
+        <Address>203 Channel Highway</Address>
+        <City>Kingston</City>
+        <Province_or_State>Tasmania</Province_or_State>
+        <Postal_Code>7050</Postal_Code>
+        <Country>Australia</Country>
+      </Contact_Address>
+    </Personnel>
+  </Data_Center>
+  <Distribution>
+    <Distribution_Media>HTTP</Distribution_Media>
+    <Distribution_Size>8.8 MB</Distribution_Size>
+    <Distribution_Format>text, .dat, word</Distribution_Format>
+    <Fees>free</Fees>
+  </Distribution>
+  <Summary>
+    <Abstract>AM06 borehole drilled January 2010.
+
+Data being collected at annual re-visits to site.
+
+Consult Readme file for detail of data files and formats.  A word document providing further information is also available as part of the download.
+
+All of the .dat files of data can be viewed with a text editor.
+
+2012-2013 data may be final data from the unit owing to battery failure.
+
+The original project for this dataset was ASAC 1164, but recent data fall under the auspices of project AAS 4096.
+
+Taken from ASAC_1164:
+Most of the snow falling on inland Antarctica drains via large ice streams and floating ice shelves to the sea where it lost by iceberg calving or as melt beneath the shelves. Ocean interaction beneath the shelves is complicated, and regions of basal refreezing as well as melt occur. These processes are important not only because they are a major component of the Antarctic mass budget, but because they also modify the characteristics of the ocean, influencing the formation of Antarctic Bottom Water which plays a major role in the global ocean circulation. The processes are sensitive to climate change, and shifts in ocean temperature or circulation near Antarctica could lead to the disappearance of all Antarctic ice shelves.
+
+The Amery
+Ice Shelf is the major embayed shelf in East Antarctica, and the subject of considerable previous ANARE investigation. Ocean interaction processes occurring beneath the shelf are only poorly understood, and this project will directly measure water characteristics and circulation in the cavity underneath the ice shelf, and the rates of melt and freezing on the bottom of the shelf. These measurements will be made through a number of access holes melted through the shelf. The project is closely linked with other projects investigating the circulation and interactions in the open ocean to the north of the shelf, and studies of the ice shelf flow and mass budget.
+
+There will be child records for each of the following data sets:
+AM06 borehole
+* Aquadopp current meter data
+* Caliper data
+* FSI-CTD profile data
+* Drilling parameters data
+* Seabird MicroCAT CTD moorings in ocean cavity beneath the shelf</Abstract>
+  </Summary>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>GET DATA</Type>
+      <Subtype>DIRECT DOWNLOAD</Subtype>
+    </URL_Content_Type>
+    <URL>https://data.aad.gov.au/eds/4012/download</URL>
+    <Description>Download point for the data</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>PROJECT HOME PAGE</Type>
+    </URL_Content_Type>
+    <URL>https://projects.aad.gov.au/report_project_public.cfm?project_no=AAS_1164</URL>
+    <Description>Public information for ASAC project 1164</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>PROJECT HOME PAGE</Type>
+    </URL_Content_Type>
+    <URL>https://projects.aad.gov.au/report_project_public.cfm?project_no=AAS_4096</URL>
+    <Description>Public information for AAS project 4096</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>VIEW RELATED INFORMATION</Type>
+    </URL_Content_Type>
+    <URL>http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=AAS_4096_AM06_MicroCAT</URL>
+    <Description>Citation reference for this metadata record and dataset</Description>
+  </Related_URL>
+  <Parent_DIF>ASAC_1164_AM06</Parent_DIF>
+  <IDN_Node>
+    <Short_Name>CEOS</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>ACE/CRC</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>AMD</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>AMD/AU</Short_Name>
+  </IDN_Node>
+  <Originating_Metadata_Node>AADC</Originating_Metadata_Node>
+  <Metadata_Name>CEOS IDN DIF</Metadata_Name>
+  <Metadata_Version>VERSION 9.9.3</Metadata_Version>
+  <DIF_Creation_Date>2015-01-28</DIF_Creation_Date>
+  <Last_DIF_Revision_Date>2025-11-17</Last_DIF_Revision_Date>
+  <DIF_Revision_History>2015-01-28 - record created by Dave Connell after data were provided by Stefan Vogel.
+2025-11-17 - record updated by Dave Connell - basic updates.</DIF_Revision_History>
+  <Extended_Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.uuid</Name>
+      <Value>7e656472-cd6f-4dc7-a55b-af3376af9b01</Value>
+    </Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.extraction_date</Name>
+      <Value>2025-11-17 13:28:24</Value>
+    </Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.keyword_version</Name>
+      <Value>8.6</Value>
+    </Metadata>
+  </Extended_Metadata>
+</DIF>

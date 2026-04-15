@@ -1,0 +1,208 @@
+2013-01-13 06:54:22.133 - TxData - \r\n
+2013-01-13 06:54:22.190 - RxData - \r\n
+2013-01-13 06:54:22.489 - RxData -  
+2013-01-13 06:54:22.591 - RxData - 
+2013-01-13 06:54:22.740 - RxData - 
+2013-01-13 06:54:23.290 - RxData - 
+2013-01-13 06:54:23.740 - RxData - 
+2013-01-13 06:54:25.190 - RxData - 
+2013-01-13 06:54:25.341 - RxData - 
+2013-01-13 06:54:25.440 - RxData - 
+2013-01-13 06:54:25.940 - RxData - 
+2013-01-13 06:54:26.341 - RxData - \r\n
+2013-01-13 06:54:26.841 - RxData - rx time out: no termination character from modem\r\n
+2013-01-13 06:54:26.940 - RxData - S>
+2013-01-13 06:54:26.990 - Port  open - ASRL8::INSTR
+2013-01-13 06:54:48.453 - TxData - PWRON\r\n
+2013-01-13 06:54:48.507 - RxData - PWRON\r\n
+2013-01-13 06:54:48.513 - RxData - \r\n
+2013-01-13 06:54:48.956 - RxData - sending wake up tone, wait 4 seconds
+2013-01-13 06:54:53.806 - RxData - \r\n
+2013-01-13 06:54:53.855 - RxData - S>
+2013-01-13 06:55:00.718 - TxData - #22DS\r\n
+2013-01-13 06:55:00.776 - RxData - #22DS\r\n
+2013-01-13 06:55:02.026 - RxData - SBE37-IM 3.0b  SERIAL NO. 7322  13 Jan 2013 06:54:59\r\n
+2013-01-13 06:55:02.375 - RxData - vMain =  6.86, vLith =  3.11\r\n
+2013-01-13 06:55:02.776 - RxData - samplenumber = 15456, free = 543784\r\n
+2013-01-13 06:55:03.075 - RxData - not logging, stop command\r\n
+2013-01-13 06:55:03.425 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:55:03.776 - RxData - data format = converted engineering\r\n
+2013-01-13 06:55:04.125 - RxData - do not transmit sample number\r\n
+2013-01-13 06:55:04.324 - RxData - pump installed = no\r\n
+2013-01-13 06:55:04.575 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:55:04.675 - RxData - <Executed/>\r\n
+2013-01-13 06:55:04.824 - RxData - S>
+2013-01-13 06:55:04.884 - TxData - #26DS\r\n
+2013-01-13 06:55:04.949 - RxData - #26DS\r\n
+2013-01-13 06:55:06.199 - RxData - SBE37-IM 3.0b  SERIAL NO. 7326  13 Jan 2013 06:55:12\r\n
+2013-01-13 06:55:06.500 - RxData - vMain =  6.90, vLith =  3.11\r\n
+2013-01-13 06:55:06.949 - RxData - samplenumber = 15456, free = 543784\r\n
+2013-01-13 06:55:07.250 - RxData - not logging, stop command\r\n
+2013-01-13 06:55:07.599 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:55:07.949 - RxData - data format = converted engineering\r\n
+2013-01-13 06:55:08.250 - RxData - do not transmit sample number\r\n
+2013-01-13 06:55:08.500 - RxData - pump installed = no\r\n
+2013-01-13 06:55:08.750 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:55:08.849 - RxData - <Executed/>\r\n
+2013-01-13 06:55:08.999 - RxData - S>
+2013-01-13 06:55:09.059 - TxData - #27DS\r\n
+2013-01-13 06:55:09.132 - RxData - #27DS\r\n
+2013-01-13 06:55:10.389 - RxData - SBE37-IM 3.0b  SERIAL NO. 7327  13 Jan 2013 06:55:01\r\n
+2013-01-13 06:55:10.690 - RxData - vMain =  6.93, vLith =  3.11\r\n
+2013-01-13 06:55:11.139 - RxData - samplenumber = 15456, free = 543784\r\n
+2013-01-13 06:55:11.390 - RxData - not logging, stop command\r\n
+2013-01-13 06:55:11.740 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:55:12.139 - RxData - data format = converted engineering\r\n
+2013-01-13 06:55:12.440 - RxData - do not transmit sample number\r\n
+2013-01-13 06:55:12.639 - RxData - pump installed = no\r\n
+2013-01-13 06:55:12.892 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:55:13.041 - RxData - <Executed/>\r\n
+2013-01-13 06:55:13.141 - RxData - S>
+2013-01-13 06:55:38.829 - TxData - #22DS\r\n
+2013-01-13 06:55:38.884 - RxData - #22DS\r\n
+2013-01-13 06:55:40.135 - RxData - SBE37-IM 3.0b  SERIAL NO. 7322  13 Jan 2013 06:55:37\r\n
+2013-01-13 06:55:40.484 - RxData - vMain =  6.85, vLith =  3.11\r\n
+2013-01-13 06:55:40.884 - RxData - samplenumber = 15456, free = 543784\r\n
+2013-01-13 06:55:41.184 - RxData - not logging, stop command\r\n
+2013-01-13 06:55:41.534 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:55:41.884 - RxData - data format = converted engineering\r\n
+2013-01-13 06:55:42.234 - RxData - do not transmit sample number\r\n
+2013-01-13 06:55:42.434 - RxData - pump installed = no\r\n
+2013-01-13 06:55:42.684 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:55:42.784 - RxData - <Executed/>\r\n
+2013-01-13 06:55:42.934 - RxData - S>
+2013-01-13 06:55:42.993 - TxData - #22DATETIME=01132013065542\r\n
+2013-01-13 06:55:43.057 - RxData - #22DATETIME=01132013065542\r\n
+2013-01-13 06:55:44.157 - RxData - <Executed/>\r\n
+2013-01-13 06:55:44.306 - RxData - S>
+2013-01-13 06:55:44.364 - TxData - #22SAMPLENUM=0\r\n
+2013-01-13 06:55:44.432 - RxData - #22SAMPLENUM=0\r\n
+2013-01-13 06:55:45.582 - RxData - this command will modify memory pointers\r\n
+2013-01-13 06:55:45.882 - RxData - repeat the command to confirm\r\n
+2013-01-13 06:55:46.032 - RxData - S>
+2013-01-13 06:55:46.092 - TxData - #22SAMPLENUM=0\r\n
+2013-01-13 06:55:46.174 - RxData - #22SAMPLENUM=0\r\n
+2013-01-13 06:55:47.124 - RxData - <Executed/>\r\n
+2013-01-13 06:55:47.273 - RxData - S>
+2013-01-13 06:55:47.331 - TxData - #22STARTDATETIME=01132013073000\r\n
+2013-01-13 06:55:47.407 - RxData - #22STARTDATETIME=01132013073000\r\n
+2013-01-13 06:55:49.006 - RxData - <start dateTime = 13 Jan 2013 07:30:00/>\r\n
+2013-01-13 06:55:49.106 - RxData - <Executed/>\r\n
+2013-01-13 06:55:49.256 - RxData - S>
+2013-01-13 06:55:49.315 - TxData - #22DS\r\n
+2013-01-13 06:55:49.389 - RxData - #22DS\r\n
+2013-01-13 06:55:50.641 - RxData - SBE37-IM 3.0b  SERIAL NO. 7322  13 Jan 2013 06:55:47\r\n
+2013-01-13 06:55:50.941 - RxData - vMain =  6.86, vLith =  3.11\r\n
+2013-01-13 06:55:51.342 - RxData - samplenumber = 0, free = 559240\r\n
+2013-01-13 06:55:51.592 - RxData - not logging, stop command\r\n
+2013-01-13 06:55:51.941 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:55:52.342 - RxData - data format = converted engineering\r\n
+2013-01-13 06:55:52.641 - RxData - do not transmit sample number\r\n
+2013-01-13 06:55:52.842 - RxData - pump installed = no\r\n
+2013-01-13 06:55:53.092 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:55:53.243 - RxData - <Executed/>\r\n
+2013-01-13 06:55:53.342 - RxData - S>
+2013-01-13 06:55:53.415 - TxData - #26DS\r\n
+2013-01-13 06:55:53.493 - RxData - #26DS\r\n
+2013-01-13 06:55:54.743 - RxData - SBE37-IM 3.0b  SERIAL NO. 7326  13 Jan 2013 06:56:01\r\n
+2013-01-13 06:55:55.042 - RxData - vMain =  6.90, vLith =  3.11\r\n
+2013-01-13 06:55:55.493 - RxData - samplenumber = 15456, free = 543784\r\n
+2013-01-13 06:55:55.743 - RxData - not logging, stop command\r\n
+2013-01-13 06:55:56.092 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:55:56.493 - RxData - data format = converted engineering\r\n
+2013-01-13 06:55:56.793 - RxData - do not transmit sample number\r\n
+2013-01-13 06:55:56.993 - RxData - pump installed = no\r\n
+2013-01-13 06:55:57.243 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:55:57.392 - RxData - <Executed/>\r\n
+2013-01-13 06:55:57.493 - RxData - S>
+2013-01-13 06:55:57.562 - TxData - #26DATETIME=01132013065557\r\n
+2013-01-13 06:55:57.644 - RxData - #26DATETIME=01132013065557\r\n
+2013-01-13 06:55:58.744 - RxData - <Executed/>\r\n
+2013-01-13 06:55:58.843 - RxData - S>
+2013-01-13 06:55:58.921 - TxData - #26SAMPLENUM=0\r\n
+2013-01-13 06:55:58.999 - RxData - #26SAMPLENUM=0\r\n
+2013-01-13 06:56:00.149 - RxData - this command will modify memory pointers\r\n
+2013-01-13 06:56:00.448 - RxData - repeat the command to confirm\r\n
+2013-01-13 06:56:00.598 - RxData - S>
+2013-01-13 06:56:00.667 - TxData - #26SAMPLENUM=0\r\n
+2013-01-13 06:56:00.747 - RxData - #26SAMPLENUM=0\r\n
+2013-01-13 06:56:01.697 - RxData - <Executed/>\r\n
+2013-01-13 06:56:01.809 - RxData - S>
+2013-01-13 06:56:01.901 - TxData - #26STARTDATETIME=01132013073000\r\n
+2013-01-13 06:56:02.001 - RxData - #26STARTDATETIME=01132013073000\r\n
+2013-01-13 06:56:03.552 - RxData - <start dateTime = 13 Jan 2013 07:30:00/>\r\n
+2013-01-13 06:56:03.701 - RxData - <Executed/>\r\n
+2013-01-13 06:56:03.802 - RxData - S>
+2013-01-13 06:56:03.870 - TxData - #26DS\r\n
+2013-01-13 06:56:03.934 - RxData - #26DS\r\n
+2013-01-13 06:56:05.161 - RxData - SBE37-IM 3.0b  SERIAL NO. 7326  13 Jan 2013 06:56:02\r\n
+2013-01-13 06:56:05.511 - RxData - vMain =  6.90, vLith =  3.11\r\n
+2013-01-13 06:56:05.861 - RxData - samplenumber = 0, free = 559240\r\n
+2013-01-13 06:56:06.162 - RxData - not logging, stop command\r\n
+2013-01-13 06:56:06.511 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:56:06.861 - RxData - data format = converted engineering\r\n
+2013-01-13 06:56:07.211 - RxData - do not transmit sample number\r\n
+2013-01-13 06:56:07.411 - RxData - pump installed = no\r\n
+2013-01-13 06:56:07.664 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:56:07.763 - RxData - <Executed/>\r\n
+2013-01-13 06:56:07.912 - RxData - S>
+2013-01-13 06:56:07.986 - TxData - #27DS\r\n
+2013-01-13 06:56:08.066 - RxData - #27DS\r\n
+2013-01-13 06:56:09.316 - RxData - SBE37-IM 3.0b  SERIAL NO. 7327  13 Jan 2013 06:56:00\r\n
+2013-01-13 06:56:09.615 - RxData - vMain =  6.93, vLith =  3.11\r\n
+2013-01-13 06:56:10.065 - RxData - samplenumber = 15456, free = 543784\r\n
+2013-01-13 06:56:10.316 - RxData - not logging, stop command\r\n
+2013-01-13 06:56:10.665 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:56:11.065 - RxData - data format = converted engineering\r\n
+2013-01-13 06:56:11.365 - RxData - do not transmit sample number\r\n
+2013-01-13 06:56:11.566 - RxData - pump installed = no\r\n
+2013-01-13 06:56:11.815 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:56:11.966 - RxData - <Executed/>\r\n
+2013-01-13 06:56:12.065 - RxData - S>
+2013-01-13 06:56:12.141 - TxData - #27DATETIME=01132013065612\r\n
+2013-01-13 06:56:12.225 - RxData - #27DATETIME=01132013065612\r\n
+2013-01-13 06:56:13.325 - RxData - <Executed/>\r\n
+2013-01-13 06:56:13.424 - RxData - S>
+2013-01-13 06:56:13.495 - TxData - #27SAMPLENUM=0\r\n
+2013-01-13 06:56:13.578 - RxData - #27SAMPLENUM=0\r\n
+2013-01-13 06:56:14.726 - RxData - this command will modify memory pointers\r\n
+2013-01-13 06:56:15.026 - RxData - repeat the command to confirm\r\n
+2013-01-13 06:56:15.126 - RxData - S>
+2013-01-13 06:56:15.203 - TxData - #27SAMPLENUM=0\r\n
+2013-01-13 06:56:15.285 - RxData - #27SAMPLENUM=0\r\n
+2013-01-13 06:56:16.234 - RxData - <Executed/>\r\n
+2013-01-13 06:56:16.384 - RxData - S>
+2013-01-13 06:56:16.455 - TxData - #27STARTDATETIME=01132013073000\r\n
+2013-01-13 06:56:16.540 - RxData - #27STARTDATETIME=01132013073000\r\n
+2013-01-13 06:56:18.089 - RxData - <start dateTime = 13 Jan 2013 07:30:00/>\r\n
+2013-01-13 06:56:18.240 - RxData - <Executed/>\r\n
+2013-01-13 06:56:18.389 - RxData - S>
+2013-01-13 06:56:18.460 - TxData - #27DS\r\n
+2013-01-13 06:56:18.523 - RxData - #27DS\r\n
+2013-01-13 06:56:19.800 - RxData - SBE37-IM 3.0b  SERIAL NO. 7327  13 Jan 2013 06:56:17\r\n
+2013-01-13 06:56:20.100 - RxData - vMain =  6.94, vLith =  3.11\r\n
+2013-01-13 06:56:20.450 - RxData - samplenumber = 0, free = 559240\r\n
+2013-01-13 06:56:20.750 - RxData - not logging, stop command\r\n
+2013-01-13 06:56:21.101 - RxData - sample interval = 1800 seconds\r\n
+2013-01-13 06:56:21.450 - RxData - data format = converted engineering\r\n
+2013-01-13 06:56:21.800 - RxData - do not transmit sample number\r\n
+2013-01-13 06:56:22.000 - RxData - pump installed = no\r\n
+2013-01-13 06:56:22.251 - RxData - PC baud rate = 9600\r\n
+2013-01-13 06:56:22.350 - RxData - <Executed/>\r\n
+2013-01-13 06:56:22.500 - RxData - S>
+2013-01-13 06:56:32.868 - TxData - #22STARTLATER\r\n
+2013-01-13 06:56:32.925 - RxData - #22STARTLATER\r\n
+2013-01-13 06:56:34.575 - RxData - <!--start logging at = 13 Jan 2013 07:30:00, sample interval = 1800 seconds-->\r\n
+2013-01-13 06:56:34.724 - RxData - <Executed/>\r\n
+2013-01-13 06:56:34.824 - RxData - S>
+2013-01-13 06:56:34.884 - TxData - #26STARTLATER\r\n
+2013-01-13 06:56:34.943 - RxData - #26STARTLATER\r\n
+2013-01-13 06:56:36.593 - RxData - <!--start logging at = 13 Jan 2013 07:30:00, sample interval = 1800 seconds-->\r\n
+2013-01-13 06:56:36.741 - RxData - <Executed/>\r\n
+2013-01-13 06:56:36.842 - RxData - S>
+2013-01-13 06:56:36.901 - TxData - #27STARTLATER\r\n
+2013-01-13 06:56:36.967 - RxData - #27STARTLATER\r\n
+2013-01-13 06:56:38.616 - RxData - <!--start logging at = 13 Jan 2013 07:30:00, sample interval = 1800 seconds-->\r\n
+2013-01-13 06:56:38.766 - RxData - <Executed/>\r\n
+2013-01-13 06:56:38.865 - RxData - S>
+2013-01-13 06:56:52.993 - Application Exiting - Shutdown pending

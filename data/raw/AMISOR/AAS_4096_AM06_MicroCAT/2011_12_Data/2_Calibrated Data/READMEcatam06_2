@@ -1,0 +1,60 @@
+
+AMISOR borehole AM06 MICROCAT data for 2011/2012 season
+-------------------------------------------------------
+
+Data from the first download.
+
+ascii format
+------------
+contained in column formatted files catxxxx_2.dat, where
+xxxx = microcat serial number. The columns are:
+
+1. decimal time - decimal days, where 0.0 = 0000 on January 1st 2001.
+So, for example, midday on 15th January 2001 is decimal time 14.5
+2. temperature (deg. C, T90)
+3. conductivity (mS/cm)
+4. pressure (dbar)
+5. salinity (PSS78)
+6. to 11. day, month, year, hour, minute, second.
+
+* Note that all times are UTC.
+
+* There is a line of data for each recording interval (i.e. no gaps),
+and null data is represented by -999.0
+
+* Clock errors were small (< 20 seconds), and no clock drift corrections have 
+been made.
+
+* Mean pressures over this latest download:
+
+cat7325 =  552.2 dbar
+cat7324 =  680.1 dbar
+cat7323 =  790.2 dbar
+
+
+* Original pressure data for microcat 7325 are suspect, with a steady drift of
+~15 dbar over the year (continuing on from the drift during the previous year).
+This drift not evident in the other 2 microcats. This pressure
+trend was removed from the data (with an additional correction to set pressures
+to the original value immediately after deployment in January 2010), and 
+conductivity/salinity values recalculated.
+
+Note that interpretation of this drifting pressure data is difficult. If the initial
+pressure after deployment in January 2010 is believed, errors of the order 2 dbar might remain
+in the current year's data (equivalent to salinity errors of ~0.002). 
+
+The original uncorrected data are in the files cat7325_2uncorrected.dat and
+cat7325_2uncorrected.mat.
+
+Data calculated using a constant pressure value of 551.3 dbar (from immediately after
+deployment in January 2010) are in the files cat7325_2meanp.dat and
+cat7325_2meanp.mat.
+
+
+matlab
+------
+contained in matlab format files catxxxx_2.mat, where
+xxxx = microcat serial number. 
+
+
+
