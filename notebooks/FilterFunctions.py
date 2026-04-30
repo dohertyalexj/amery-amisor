@@ -65,7 +65,8 @@ def lowpass_filter(series, cutoff_period, sampling_interval, order=2, max_gap_ho
         chunk = filled[s:e]
         # Skip chunks that are too short to filter reliably (as defined by the user with min_chunk_size)
         if min_chunk_size and len(chunk) < min_chunk_size:
-            result[s:e] = chunk  # keep unfiltered
+            # Keep commented out so as not to retain unfiltered chunks
+            # result[s:e] = chunk  # keep unfiltered
             continue
         # Apply the filter to the input series using filtfilt, which applies the filter forward and backward to avoid phase distortion
         try:
