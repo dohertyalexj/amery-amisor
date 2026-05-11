@@ -103,7 +103,7 @@ def plot_ts_seasonal(df, fig, ax, borehole, cat, year=None, season=None, ylim_te
     fig.canvas.draw_idle()
     fig.canvas.flush_events()
     
-    ts_plot_overlays(ax, fig, full_data, cat, ylim_temp, xlim_sal, allow_selection=allow_gade_selection)
+    ts_plot_overlays(ax, fig, full_data, cat, ylim_temp, xlim_sal, allow_selection=allow_gade_selection, year=year)
     
     ax.set_xlabel(r"Absolute Salinity $(\mathrm{S_{A}) \ g \ kg^{-1}}$", fontsize=14)
 
@@ -144,7 +144,7 @@ def plot_ts_seasonal_wrapper(df, borehole, cat, season_by_season=False, regional
 
         plt.tight_layout()
 
-        add_season_colorbars(fig, season_cmaps, shade_levels)
+    add_season_colorbars(fig, season_cmaps, shade_levels)
 
     plt.show()
 

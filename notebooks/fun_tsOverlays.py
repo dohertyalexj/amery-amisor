@@ -23,18 +23,20 @@ AVG_PRESSURES = {
     "7325": 551.4,    "7324": 680.8,   "7323": 790.3,
 }
 
+# Initialise a resuable dictionary keyed by cat and year (or median)
 GADE_ANCHORS = {}
 
-def get_gade_anchors(cat, plot_data, ax, fig):
+def get_gade_anchors(cat, plot_data, ax, fig, year=None):
     """Interactively select or retrieve saved Gade anchor points for this cat."""
-    
+    key = (cat, year if year is not None else "median")
+
     # Ask the user if they would like to select an anchoring point for the meltwater mixing line interactively
     response = input(f"Would you like to select a new meltwater mixing (Gade) line for cat{cat}? [y/n]: ").strip().lower()
     
     # Handle if the user response is negative
     if response != "y":
         # Return previously saved anchors or an empty list if none previously saved
-        return GADE_ANCHORS[cat]
+        return GADE_ANCHORS.get(key, [])
     
     # Initialise an empty list to add new selected anchoring points to
     anchors = []
@@ -96,48 +98,8 @@ def get_gade_anchors(cat, plot_data, ax, fig):
     # Clean up the invisible picker scatter
     picker_scatter.remove()
     
-    GADE_ANCHORS[cat] = anchors
+    GADE_ANCHORS[key] = anchors
     return anchors
-    
-    # # Ask the user to select a point on the plot
-    # print("Click the plot to select the first Gade anchor point...")
-    # # Ensure the plot is refreshed for the user in the most recent iteration
-    # plt.draw()
-    # # Extract the (SA, CT) tuple of points from one click (n=1) given by the user
-    # # timeout=-1 means the user has no timeout
-    # points = plt.ginput(n=1, timeout=-1)
-    # # If the user right-clicks this cancels ginput, so we handle this by returning what was previously saved for this MicroCAT
-    # # or an empty list if nothing had previously been saved
-    # if not points:
-    #     print("No point selected.")
-    #     return GADE_ANCHORS.get(cat, [])
-    
-    # # As the clicked point is unlikely to land exactly on a datapoint, we use a function (defined below) to find the nearest actual
-    # # datapoint and return (SA, CT) coordinates
-    # anchor1 = _snap_to_nearest(points[0], plot_data)
-    # # Append this newly selected point the list we just created above
-    # anchors.append(anchor1)
-    # # Draw this selected point as an open circle immediately so that the user can see it
-    # ax.plot(anchor1[0], anchor1[1], "ko", markersize=10, mfc="none", mew=2)
-    # plt.draw()
-    
-    # # Ask about a second anchoring point for instances where there are clearly more than one water mass source
-    # response2 = input(f"Would you like to select a second meltwater mixing (Gade) line for cat{cat}? [y/n]: ").strip().lower()
-    
-    # # Handle if the user response is affirmative for second meltwater mixing line
-    # if response2 == "y":
-    #     print("Click the plot to select the second Gade anchor point...")
-    #     plt.draw()
-    #     points2 = plt.ginput(n=1, timeout=-1)
-    #     if points2:
-    #         anchor2 = _snap_to_nearest(points2[0], plot_data)
-    #         anchors.append(anchor2)
-    #         ax.plot(anchor2[0], anchor2[1], "ko", markersize=10, mfc="none", mew=2)
-    #         plt.draw()
-    
-    # # Save the newly selected anchor(s) to the module-level dict, replacing any previously selected anchors
-    # GADE_ANCHORS[cat] = anchors
-    # return anchors
 
 # Define a function to take the (SA, CT) tuple of points just clicked and compare them to our dataset of actual (SA, CT) points
 def _snap_to_nearest(clicked_point, plot_data):
@@ -153,7 +115,7 @@ def _snap_to_nearest(clicked_point, plot_data):
     return (nearest["absolute_salinity"], nearest["conservative_temperature"])
 
 # Define a function to plot different overlays to aid in identifying and interpreting the source water masses
-def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selection=True):
+def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selection=True, year=None):
     # Define the range of temp and salinity over which we will plot these
     salinity_range = np.linspace(xlim_sal[0], xlim_sal[1], 100)
     temp_range = np.linspace(ylim_temp[0], ylim_temp[1], 100)
@@ -190,9 +152,10 @@ def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selecti
     # anchor available to use
     if allow_selection:
         # Interactive choose anchoring point(s)
-        anchors = get_gade_anchors(cat, plot_data, ax, fig)
+        anchors = get_gade_anchors(cat, plot_data, ax, fig, year=year)
     else:
-        anchors = GADE_ANCHORS.get(cat, [])
+        key = (cat, year if year is not None else "median")
+        anchors = GADE_ANCHORS.get(key, [])
 
     # Iterate over the selected anchors, and plot a meltwater mixing line for each
     for salinity_source, temp_source in anchors:
