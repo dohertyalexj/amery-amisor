@@ -26,7 +26,7 @@ try:
 except (FileNotFoundError, EOFError):
     pass
 
-def plot_ts_seasonal(df, fig, ax, borehole, cat, year=None, season=None, ylim_temp=None, xlim_sal=None, allow_gade_selection=True):
+def plot_ts_seasonal(df, fig, ax, borehole, cat, year=None, average="median", season=None, ylim_temp=None, xlim_sal=None, allow_gade_selection=True):
     if ylim_temp is not None: ax.set_ylim(*ylim_temp)
     if xlim_sal  is not None: ax.set_xlim(*xlim_sal)
     
@@ -63,9 +63,13 @@ def plot_ts_seasonal(df, fig, ax, borehole, cat, year=None, season=None, ylim_te
         # Add a "month" to each binned DOY so we can assign it to a season
         sub["month"] = sub["time"].dt.month
     else:
-        # Calculate the median temp and salinity values on the equivalent timestamp between different years
-        sub = sub.groupby("doy_bin")[["conservative_temperature", "absolute_salinity"]].median().dropna()
-
+        if average == "mean":
+            # Calculate the mean temp and salinity values on the equivalent timestamp between different years
+            sub = sub.groupby("doy_bin")[["conservative_temperature", "absolute_salinity"]].mean().dropna()
+        else:
+            # Calculate the median temp and salinity values on the equivalent timestamp between different years
+            sub = sub.groupby("doy_bin")[["conservative_temperature", "absolute_salinity"]].median().dropna()
+        
         # Add a "month" to each binned DOY so we can assign it to a season
         # Use a non-leap reference year to convert DOY back to month
         sub["month"] = pd.to_datetime(sub.index, unit="D", origin="2001-01-01").month
@@ -103,12 +107,12 @@ def plot_ts_seasonal(df, fig, ax, borehole, cat, year=None, season=None, ylim_te
     fig.canvas.draw_idle()
     fig.canvas.flush_events()
     
-    ts_plot_overlays(ax, fig, full_data, cat, ylim_temp, xlim_sal, allow_selection=allow_gade_selection, year=year)
+    ts_plot_overlays(ax, fig, full_data, cat, ylim_temp, xlim_sal, allow_selection=allow_gade_selection, year=year, average=average)
     
     ax.set_xlabel(r"Absolute Salinity $(\mathrm{S_{A}) \ g \ kg^{-1}}$", fontsize=14)
 
 
-def plot_ts_seasonal_wrapper(df, borehole, cat, season_by_season=False, regional=False, year=None, allow_selection=True):
+def plot_ts_seasonal_wrapper(df, borehole, cat, season_by_season=False, regional=False, year=None, average="median", allow_selection=True):
     # Define the limits for plots of temperature and salinity
     ylim_temp_regional = (-2.4, 2.0)
     ylim_temp_cavity = (-2.4, -1.7)
@@ -126,7 +130,7 @@ def plot_ts_seasonal_wrapper(df, borehole, cat, season_by_season=False, regional
 
         # Iterate over each season
         for i, (season_name, (cmap_name, months)) in enumerate(season_cmaps.items()):
-            plot_ts_seasonal(df, fig, axes_flat[i], borehole, cat, year, season=season_name, ylim_temp=ylim_temp, xlim_sal=xlim_sal, allow_gade_selection=False)
+            plot_ts_seasonal(df, fig, axes_flat[i], borehole, cat, year=year, average=average, season=season_name, ylim_temp=ylim_temp, xlim_sal=xlim_sal, allow_gade_selection=False)
 
         # Put the y-axis label only on the leftmost plot
         axes_flat[0].set_ylabel(r"Conservative Temperature ($\Theta$) (°C)", fontsize=12)
@@ -138,7 +142,7 @@ def plot_ts_seasonal_wrapper(df, borehole, cat, season_by_season=False, regional
     else:
         fig, ax = plt.subplots(figsize=(15, 12))
         
-        plot_ts_seasonal(df, fig, ax, borehole, cat, year, ylim_temp=ylim_temp, xlim_sal=xlim_sal, allow_gade_selection=allow_selection)
+        plot_ts_seasonal(df, fig, ax, borehole, cat, year=None, average=average, ylim_temp=ylim_temp, xlim_sal=xlim_sal, allow_gade_selection=allow_selection)
         
         ax.set_ylabel(r"Conservative Temperature ($\Theta$) (°C)", fontsize=14)
 

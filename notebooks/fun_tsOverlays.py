@@ -23,12 +23,12 @@ AVG_PRESSURES = {
     "7325": 551.4,    "7324": 680.8,   "7323": 790.3,
 }
 
-# Initialise a resuable dictionary keyed by cat and year (or median)
+# Initialise a resuable dictionary keyed by cat and year (or average)
 GADE_ANCHORS = {}
 
-def get_gade_anchors(cat, plot_data, ax, fig, year=None):
+def get_gade_anchors(cat, plot_data, ax, fig, year=None, average="median"):
     """Interactively select or retrieve saved Gade anchor points for this cat."""
-    key = (cat, year if year is not None else "median")
+    key = (cat, year if year is not None else average)
 
     # Ask the user if they would like to select an anchoring point for the meltwater mixing line interactively
     response = input(f"Would you like to select a new meltwater mixing (Gade) line for cat{cat}? [y/n]: ").strip().lower()
@@ -115,7 +115,7 @@ def _snap_to_nearest(clicked_point, plot_data):
     return (nearest["absolute_salinity"], nearest["conservative_temperature"])
 
 # Define a function to plot different overlays to aid in identifying and interpreting the source water masses
-def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selection=True, year=None):
+def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selection=True, year=None, average="median"):
     # Define the range of temp and salinity over which we will plot these
     salinity_range = np.linspace(xlim_sal[0], xlim_sal[1], 100)
     temp_range = np.linspace(ylim_temp[0], ylim_temp[1], 100)
@@ -154,7 +154,7 @@ def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selecti
         # Interactive choose anchoring point(s)
         anchors = get_gade_anchors(cat, plot_data, ax, fig, year=year)
     else:
-        key = (cat, year if year is not None else "median")
+        key = (cat, year if year is not None else average)
         anchors = GADE_ANCHORS.get(key, [])
 
     # Iterate over the selected anchors, and plot a meltwater mixing line for each
