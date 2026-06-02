@@ -119,7 +119,10 @@ def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selecti
     # Define the range of temp and salinity over which we will plot these
     salinity_range = np.linspace(xlim_sal[0], xlim_sal[1], 100)
     temp_range = np.linspace(ylim_temp[0], ylim_temp[1], 100)
-    pressure_average = AVG_PRESSURES[f"{cat}"]
+
+    # Normalise cat input to always be a list
+    cats = [cat] if isinstance(cat, str) else list(cat)
+    pressures = [AVG_PRESSURES[f"{c}"] for c in cats]
 
     # 1. Freezing point temperature line at 0 dbar (saturation fraction = 0)
     CT_freeze_0 = gsw.CT_freezing(salinity_range, 0, 0)
@@ -127,9 +130,22 @@ def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selecti
     label_curve_tangent(ax, salinity_range, CT_freeze_0, 0.125, r"$\Theta_f$ (0 dbar)", "b", 14)
 
     # 2. Freezing point temperature line at average mooring pressure (determined at deployment)
-    CT_freeze_p = gsw.CT_freezing(salinity_range, pressure_average, 0)
-    ax.plot(salinity_range, CT_freeze_p, "b-", lw=1, label="_")
-    label_curve_tangent(ax, salinity_range, CT_freeze_p, 0.125, fr"$\Theta_f$ ({pressure_average:.0f} dbar)", "b", 14)
+    # Sort by pressure so colours step from light (shallow) to dark (deep)
+    cats_sorted = sorted(zip(cats, pressures), key=lambda x: x[1])
+    n_cats = len(cats_sorted)
+    
+    # Shades from light grey to black
+    if n_cats == 1:
+        shades = ["black"]
+    else:
+        shades = [str(0.6 - 0.6 * i / (n_cats - 1)) for i in range(n_cats)]
+        # "0.6" is light grey, "0.0" is black — interpolated in between
+    
+    # Iterate over each cat and corresponding pressure
+    for (c, p), shade in zip(cats_sorted, shades):
+        CT_freeze_p = gsw.CT_freezing(salinity_range, p, 0)
+        ax.plot(salinity_range, CT_freeze_p, "-", color=shade, lw=1, label="_")
+        label_curve_tangent(ax, salinity_range, CT_freeze_p, 0.125, fr"$\Theta_f$ ({p:.0f} dbar)", shade, 14)
 
     # 3. Neutral density curves from Blanckensee et al. (2024)
     ax.plot(x_curve1, y_curve1, "r-", lw=1.5)
@@ -150,28 +166,30 @@ def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selecti
     # and cool from this point, along the meltwater mixing line)
     # First we check if we will be allowing a new selection to occur in this function call, if not, we see if there is a previously
     # anchor available to use
-    if allow_selection:
+    if allow_selection and len(cats) == 1:
         # Interactive choose anchoring point(s)
-        anchors = get_gade_anchors(cat, plot_data, ax, fig, year=year)
+        anchors = get_gade_anchors(cats[0], plot_data, ax, fig, year=year)
+    elif len(cats) == 1:
+        key_single = (cats[0], year if year is not None else average)
+        anchors = GADE_ANCHORS.get(key_single, [])
     else:
-        key = (cat, year if year is not None else average)
-        anchors = GADE_ANCHORS.get(key, [])
+        key_all = ("all", None)
+        anchors = GADE_ANCHORS.get(key_all, [])
+
+    if len(cats) == 1:
+        gade_pressure = AVG_PRESSURES[f"{cats[0]}"]
+    else:
+        gade_pressure = np.mean(pressures)  # or max(pressures), or whatever you prefer
 
     # Iterate over the selected anchors, and plot a meltwater mixing line for each
     for salinity_source, temp_source in anchors:
         # Ice temperature: in situ freezing temperature at source pressure
-        t_ice = gsw.t_freezing(salinity_source, pressure_average, 0)
+        t_ice = gsw.t_freezing(salinity_source, gade_pressure, 0)
 
         # Get dSA/dCT from gsw, invert to get dCT/dSA for plotting
-        dSA_dCT = gsw.ice.melting_ice_SA_CT_ratio(salinity_source, temp_source, pressure_average, t_ice)
+        dSA_dCT = gsw.ice.melting_ice_SA_CT_ratio(salinity_source, temp_source, gade_pressure, t_ice)
         slope = 1 / dSA_dCT  # dCT/dSA
-        
+            
         CT_gade = temp_source + slope * (salinity_range - salinity_source)
-        ax.plot(salinity_range, CT_gade, "k--", lw=1.5, label="Meltwater mixing line")
-        ax.plot(salinity_source, temp_source, "ko", markersize=6)
-
-    
-        
-    
-        
-   
+        ax.plot(salinity_range, CT_gade, "k--", lw=1.5, label="_")
+        #ax.plot(salinity_source, temp_source, "ko", markersize=6)
