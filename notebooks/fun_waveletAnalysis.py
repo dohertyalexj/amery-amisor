@@ -296,144 +296,142 @@ def wavelet_analysis(df, borehole, cat, variable="conservative_temperature", max
     # Interpolate across gaps of up to the limit specified
     series = series.interpolate(method="time", limit=limit, limit_area="inside")
     
-    # ---- OPTIONAL????: Longest Continuous Stretch ----
-    # Keep only the longest continuous (gap-free) stretch for the CWT
+    # ---- Find All Valid Segments ----
     # Keep track of which values are valid (not NaN) in the interpolated time series
     valid = series.notna()
-    # Assign a unique ID to each contiguous run of valud data
-    # valid != valid.shift() is True where the validity changes (e.g. where data start or ends), and cumsum() gives a unique ID
+    # Assign a unique ID to each contiguous run of valid data
+    # valid != valid.shift() is True where validity changes, and cumsum() gives a unique ID per run
     run_id = (valid != valid.shift()).cumsum()
-    # Find the ID of the longest run
-    longest_run = series[valid].groupby(run_id[valid]).size().idxmax()
-    # Keep only the values from the longest run, and drop any remaining NaNs
-    series = series[run_id == longest_run].dropna()
-    
-    # ---- Pre-Wavelet Check ----
-    # Wavelet analysis requires a minimum number of data points to be meaningful
-    if len(series) < 32:
-        print(f"Not enough continuous data for {borehole} cat{cat} ({len(series)} points)")
+    # Collect all valid segments that are long enough for a meaningful CWT
+    segments = []
+    for seg_id, grp in series[valid].groupby(run_id[valid]):
+        seg = grp.dropna()
+        if len(seg) >= 32:
+            segments.append(seg)
+
+    if not segments:
+        print(f"No usable continuous segments for {borehole} cat{cat}")
         return
-    
-    # ---- Time Axis ----
-    # Define the sample interval in days 
-    dt = 1 / samples_per_day  # since we resampled to 30-minute
-    # Find the raw numpy array of values
-    dat = series.values
-    # Find the number of data points in the time series
-    N = dat.size
-    # Find the DatetimeIndex
-    time = series.index 
-    
-    # ---- Normalise ----
-    # Find the standard deviation of the time series
-    std = dat.std()
-    # Find the variance of the time series
-    std2 = std ** 2
-    # Normalise the time series to zero mean and unit variance
-    dat_norm = (dat - dat.mean()) / std
-    
-    # ---- Wavelet Parameters ----
-    # Set the controls period resolution
-    dj = 1 / 12          # twelve sub-octaves per octave
-    # Set the smallest period to 1 hour (twice the sampling rate, i.e. the Nyquist limit)
-    s0 = 2 * dt         
-    # Set the number of scales
-    # MATLAB: MaxScale = n × 0.17 × 2 × dt; J = log2(MaxScale / s0) / dj
-    max_scale = N * 0.17 * 2 * dt
-    J = int(round(np.log2(max_scale / s0) / dj))
-    # Set the wavelet
+
+    # ---- Shared Wavelet Parameters ----
+    dt = 1 / samples_per_day
+    dj = 1 / 12
+    s0 = 2 * dt
     mother = wavelet.Morlet(6)
-    
-    # Lag-1 autocorrelation
-    # Used to model red-noise background for significance testing
-    try:
-        alpha, _, _ = wavelet.ar1(dat_norm)
-    except Warning:
-        alpha = 1.0
-    
-    # # ---- The Wavelet Transform ----
-    # Returns the complex wavelet coefficients, the scale used, the equivalent Fourier frequencies, 
-    # the con of influence (period-by-time region near edges where results are unreliable), 
-    # and the Fourier spectrum of the input
-    wave, scales, freqs, coi, fft, fftfreqs = wavelet.cwt(dat_norm, dt, dj, s0, J, mother)
-    
-    # Compute the wavelet power spectrum (squared mangitude of complex coefficients)
-    power = np.abs(wave) ** 2
-    period = 1 / freqs
-    
-    # Compute the 95% significance threshold of the wavelet power spectrum based on the red-noise background
-    signif, _ = wavelet.significance(1.0, dt, scales, 0, alpha, significance_level=0.95, wavelet=mother)
-    # Divide the wavelet power spectrum by the significance threshold so sig95 > 1 flags significant points
-    sig95 = power / (np.ones([1, N]) * signif[:, None])
-    
-    # Global spectrum
-    glbl_power = power.mean(axis=1)
-    dof = N - scales
-    glbl_signif, _ = wavelet.significance(std2, dt, scales, 1, alpha, significance_level=0.95, dof=dof, wavelet=mother)
-    
+    # Derive J from the longest segment so all segments share the same period axis
+    longest_N = max(len(seg) for seg in segments)
+    max_scale_global = longest_N * 0.17 * 2 * dt
+    J_global = int(round(np.log2(max_scale_global / s0) / dj))
+
+    # ---- Per-Segment CWT ----
+    seg_results = []
+    for seg in segments:
+        dat = seg.values
+        N = len(dat)
+        std = dat.std()
+        dat_norm = (dat - dat.mean()) / std
+
+        # Lag-1 autocorrelation for red-noise significance testing
+        try:
+            alpha, _, _ = wavelet.ar1(dat_norm)
+        except Warning:
+            alpha = 1.0
+
+        # Returns complex wavelet coefficients, scales, Fourier frequencies,
+        # cone of influence, and the Fourier spectrum
+        wave, scales, freqs, coi, fft, fftfreqs = wavelet.cwt(dat_norm, dt, dj, s0, J_global, mother)
+        power = np.abs(wave) ** 2
+        period = 1 / freqs
+
+        # 95% significance threshold against a red-noise background
+        signif, _ = wavelet.significance(1.0, dt, scales, 0, alpha, significance_level=0.95, wavelet=mother)
+        # sig95 > 1 flags significant points
+        sig95 = power / (np.ones([1, N]) * signif[:, None])
+
+        seg_results.append(dict(
+            seg=seg, dat_norm=dat_norm, power=power,
+            period=period, coi=coi, sig95=sig95,
+        ))
+
+    # All segments share the same period array because J_global is identical for each
+    period = seg_results[0]["period"]
+
+    # ---- Shared Colour Limits ----
+    # Compute across all segments so the colour scale is comparable between them
+    all_log2_power = np.concatenate([np.abs(np.log2(r["power"])).ravel() for r in seg_results])
+    colour_lim_max = max(np.nanpercentile(all_log2_power, 98), 3)
+
     # ---- Plot ----
     fig = plt.figure(figsize=(12, 9))
-    
+
     # Panel A — variance (squared anomaly)
     # Manually position the plot - plt.axes([left, bottom, width, height])
     ax = plt.axes([0.08, 0.78, 0.78, 0.15])
-    variance = dat_norm ** 2
-    ax.plot(time, variance, "k", linewidth=0.5)
-    # ax.set_title(f"a) {borehole} cat{cat} — {variable} variance")
+    for r in seg_results:
+        ax.plot(r["seg"].index, r["dat_norm"] ** 2, "k", linewidth=0.5)
     ax.set_ylabel("Variance")
-    
+
     # Panel B — wavelet power spectrum (full width)
     # Manually position the plot - plt.axes([left, bottom, width, height]), sharing the x-axis with the above plot
     bx = plt.axes([0.08, 0.15, 0.78, 0.58], sharex=ax)
-    
-    # Define a small time delta to extend the cone of influence shading slightly beyond the edges of the plot
-    dt_td = pd.Timedelta(minutes=30)
-    # Convert the time and edge times to matplotlib's internal date format 
-    time_num = mdates.date2num(time)
-    edge_num = [mdates.date2num(time[-1] + dt_td), mdates.date2num(time[-1] + dt_td), 
-                mdates.date2num(time[0] - dt_td), mdates.date2num(time[0] - dt_td)]
-    
-    # Use a high percentile rather than absolute max — robust to extreme spikes
-    colour_lim_max = max(np.nanpercentile(np.abs(np.log2(power)), 98), 3)
-    # Draw the filled contour of the wavelet power spectrum, with the y-axis on a log2 scale
-    cf = bx.imshow(np.log2(power), extent=[time_num[0], time_num[-1],np.log2(period[-1]), np.log2(period[0])],
-               aspect="auto", cmap=parula_map, vmin=-colour_lim_max, vmax=colour_lim_max,
-               interpolation="bilinear",  # MATLAB default for imagesc
-               origin="upper")
-    # Draw the black significant contours where sig95 > 1
-    bx.contour(time, np.log2(period), sig95, [-99, 1], colors="k", linewidths=2)
 
-    # Fade the area outside the cone of influence (semi-transparent white)
-    # Results inside this region are unreliable due to edge effects
-    bx.fill(np.concatenate([time_num, edge_num]),
+    # Define a small time delta to extend the cone of influence shading slightly beyond the edges of each segment
+    dt_td = pd.Timedelta(minutes=30)
+    cf = None
+    for r in seg_results:
+        seg = r["seg"]
+        power = r["power"]
+        coi = r["coi"]
+        sig95 = r["sig95"]
+        # Convert the segment's time index to matplotlib's internal date format
+        time_num = mdates.date2num(seg.index)
+
+        # Draw the filled wavelet power spectrum for this segment
+        cf = bx.imshow(
+            np.log2(power),
+            extent=[time_num[0], time_num[-1], np.log2(period[-1]), np.log2(period[0])],
+            aspect="auto", cmap=parula_map,
+            vmin=-colour_lim_max, vmax=colour_lim_max,
+            interpolation="bilinear",
+            origin="upper",
+        )
+        # Draw the black significant contours where sig95 > 1
+        bx.contour(seg.index, np.log2(period), sig95, [-99, 1], colors="k", linewidths=2)
+
+        # Fade the area outside the cone of influence for this segment
+        edge_num = [
+            mdates.date2num(seg.index[-1] + dt_td), mdates.date2num(seg.index[-1] + dt_td),
+            mdates.date2num(seg.index[0] - dt_td), mdates.date2num(seg.index[0] - dt_td),
+        ]
+        bx.fill(
+            np.concatenate([time_num, edge_num]),
             np.concatenate([np.log2(coi), [1e-9], np.log2(period[-1:]), np.log2(period[-1:]), [1e-9]]),
-            "white", alpha=0.5, zorder=2)
-    # Add a thin black line marking the edge of the cone of influence
-    bx.plot(time_num, np.log2(coi), "k", linewidth=1, zorder=3)
-    
-    # bx.set_title(f"b) Wavelet Power Spectrum ({mother.name})")
+            "white", alpha=0.5, zorder=2,
+        )
+        # Add a thin black line marking the edge of the cone of influence
+        bx.plot(time_num, np.log2(coi), "k", linewidth=1, zorder=3)
+
     bx.set_ylabel("Period")
-    
-    # Set the y-ticks to be powers of 2 
+
+    # Set the y-ticks to be powers of 2
     Yticks = 2.0 ** np.arange(np.ceil(np.log2(period.min())), np.ceil(np.log2(period.max())))
     bx.set_yticks(np.log2(Yticks))
     # Format the y-tick labels to show hours for periods under 1 day, and days for periods of 1 day or more
     yticklabels = [f"{y*24:.0f} h" if y < 1 else f"{y:.0f} d" for y in Yticks]
     bx.set_yticklabels(yticklabels)
-
     # Invert the y-axis so that the shorter periods are at the top
     bx.set_ylim(np.log2(period.max()), np.log2(period.min()))
-    
+
     # Set minor ticks at every month, and major ticks at every year
     bx.xaxis.set_minor_locator(mdates.MonthLocator())
     bx.xaxis.set_major_locator(mdates.YearLocator())
-    
+
     # Define a custom formatter function to show the month as a one-letter abbreviation
     def month_formatter(x, pos):
-        # Convert the x (matplotlib's internal date format) value back to a datetime object and 
+        # Convert the x (matplotlib's internal date format) value back to a datetime object and
         # format the label to show the month as a one-letter abbreviation
         return mdates.num2date(x).strftime("%b")[0]
-    
+
     # Set the custom formatter for both minor and major ticks on the x-axis
     bx.xaxis.set_minor_formatter(plt.FuncFormatter(month_formatter))
     bx.xaxis.set_major_formatter(plt.FuncFormatter(month_formatter))
@@ -442,23 +440,26 @@ def wavelet_analysis(df, borehole, cat, variable="conservative_temperature", max
     bx.tick_params(axis="x", which="major", labelsize=8, length=8, pad=2)
 
     # Year separators below the x-axis
-    # Use a blended transform to position year separators in 
+    # Use a blended transform to position year separators in
     # axes coordinates vertically - so they are fixed distance below x-axis
     # but in data coordinates horizontally - so they align with years on the x-axis
     trans = blended_transform_factory(bx.transData, bx.transAxes)
-    
+
+    # Determine the overall time span from the first to last valid data point across all segments
+    all_start = min(r["seg"].index.min() for r in seg_results)
+    all_end = max(r["seg"].index.max() for r in seg_results)
     # Generate a list of year-start dates within the range of the time series
-    years = pd.date_range(time.min(), time.max(), freq="YS")
+    years = pd.date_range(all_start, all_end, freq="YS")
     # Build a list of segment boundaries - the start and end of the time series, and the year-start dates within it
-    year_edges = [time.min()] + [d for d in years if time.min() < d < time.max()] + [time.max()]
+    year_edges = [all_start] + [d for d in years if all_start < d < all_end] + [all_end]
     # Convert each datetime in the list of segment boundaries to matplotlib's internal date format
     year_edges_num = [mdates.date2num(d) for d in year_edges]
-    
+
     # Define the y-positions for the year separator lines and the year labels
-    # 0 is the bottom of the axes 
+    # 0 is the bottom of the axes
     y_line = -0.08
     y_label = -0.12
-    
+
     # Iterate over each pair of adjacent segment boundaries (i.e. each year)
     for i in range(len(year_edges_num) - 1):
         x_start = year_edges_num[i]
@@ -467,24 +468,24 @@ def wavelet_analysis(df, borehole, cat, variable="conservative_temperature", max
         x_mid = (x_start + x_end) / 2
         # Extract the calendar year of the midpoint date
         year = mdates.num2date(x_mid).year
-        
-        # Draw the horinzontal line for this year segment from the start to the end point
+
+        # Draw the horizontal line for this year segment from the start to the end point
         bx.plot([x_start, x_end], [y_line, y_line], "k-", linewidth=1, transform=trans, clip_on=False)
         # Draw the tick marks at the start and end of this year segment
         bx.plot([x_start, x_start], [y_line - 0.01, y_line + 0.01], "k-", linewidth=1, transform=trans, clip_on=False)
         bx.plot([x_end, x_end], [y_line - 0.01, y_line + 0.01], "k-", linewidth=1, transform=trans, clip_on=False)
         # Draw the year label, centred at the midpoint of the segment
         bx.text(x_mid, y_label, str(year), ha="center", va="top", fontsize=9, transform=trans)
-    
+
     # Manually position the colourbar to the right of the main plot
     cax = plt.axes([0.88, 0.15, 0.02, 0.58])
     # Add a colourbar for the wavelet power spectrum
     cbar = plt.colorbar(cf, cax=cax)
     # Label the colourbar with the log2 of the normalised power, so that values above 0 indicate significant power above the red-noise background
     cbar.set_label(r"$\log_2$(Power / $\sigma^2$)")
-    
+
     # Hide x-tick labels (panel B has them)
     plt.setp(ax.get_xticklabels(which="both"), visible=False)
 
-    ax.set_xlim([time.min(), time.max()])
+    ax.set_xlim([all_start, all_end])
     plt.show()

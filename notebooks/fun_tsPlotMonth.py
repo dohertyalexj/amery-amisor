@@ -37,14 +37,26 @@ try:
 except (FileNotFoundError, EOFError):
     pass
 
-def plot_ts_months(df, boreholes, months, year, average, regional, columns):
+def plot_ts_months(df, boreholes, borecats, months, year, average, regional, columns):
     # Handle if month mode has been selected, but user has not specified which months
     if months is None:
         months = list(range(1, 13))
-        
+
+    # Build borecats from boreholes if not explicitly provided
+    if borecats is None:
+        borecats = {}
+        for borehole in (boreholes or []):
+            df_bh = df[df["borehole"] == borehole]
+            cats = []
+            for position in ["upper", "middle", "lower"]:
+                cats.extend(df_bh[df_bh["water_column_position"] == position]["cat"].unique().tolist())
+            borecats[borehole] = cats
+
+    boreholes_list = list(borecats.keys())
+
     rows = math.ceil(len(months) / columns)
     fig, axes = plt.subplots(rows, columns, figsize=(10 * columns, 5 * rows), sharey=True, gridspec_kw={"wspace": 0.1}, constrained_layout=True)
-        
+
     # Flatten — but handle the single-row and single-column edge cases
     if rows == 1 and columns == 1:
         axes_flat = [axes]
@@ -53,37 +65,35 @@ def plot_ts_months(df, boreholes, months, year, average, regional, columns):
     else:
         axes_flat = list(axes.flatten())
 
-    
-    # Define the limits for plots of temperature and salinity based on the plot mode (regional vs cavity-focused) 
+
+    # Define the limits for plots of temperature and salinity based on the plot mode (regional vs cavity-focused)
     xlim_sal, ylim_temp = _get_limits(regional)
 
     # Create a dictionary to store the prepared data for each cat, keyed by borehole
     cat_data_by_borehole = {}
 
     # Iterate over each borehole
-    for borehole in boreholes:
-        # Prepare data once per cat at this borehole
+    for borehole, cats_list in borecats.items():
         df_bh = df[df["borehole"] == borehole]
         # Initialise dictionaries to hold the data for each cat
         cat_data = {}      # {cat_id: prepared_dataframe}
         cat_positions = {} # {cat_id: "upper"/"middle"/"lower"}
-        
-        # Iterate over each position at this borehole
-        for position in ["upper", "middle", "lower"]:
-            # Extract the cat corresponding to the iterated position
-            cats = df_bh[df_bh["water_column_position"] == position]["cat"].unique()
-            # Iterate over each cat
-            for cat in cats:
-                # Prepare the data for this cat
-                data = prepare_ts_data(df, borehole, cat, year=year, average=average)
-                # Add this data to the dictionaries initialised above
-                if data is not None:
-                    cat_data[cat] = data
-                    cat_positions[cat] = position
+
+        # Iterate over each cat at this borehole
+        for cat in cats_list:
+            # Look up water column position from the dataframe
+            pos_values = df_bh[df_bh["cat"] == cat]["water_column_position"].unique()
+            position = pos_values[0] if len(pos_values) > 0 else "upper"
+            # Prepare the data for this cat
+            data = prepare_ts_data(df, borehole, cat, year=year, average=average)
+            # Add this data to the dictionaries initialised above
+            if data is not None:
+                cat_data[cat] = data
+                cat_positions[cat] = position
 
         # Add the prepared data to the main dictionary keyed by borehole
         if cat_data:
-            cat_data_by_borehole[borehole] = (cat_data, cat_positions)  
+            cat_data_by_borehole[borehole] = (cat_data, cat_positions)
 
     for col, month in enumerate(months):
         # Create a new subplot for this month
@@ -127,6 +137,6 @@ def plot_ts_months(df, boreholes, months, year, average, regional, columns):
 
     axes_flat[0].legend(fontsize=10, loc="best")
 
-    bh_label = " & ".join(boreholes)
+    bh_label = " & ".join(boreholes_list)
     fig.suptitle(f"Borehole(s) {bh_label} — {year}" if year is not None else f"Borehole(s) {bh_label}", fontsize=16, y=1.02)
     plt.show()

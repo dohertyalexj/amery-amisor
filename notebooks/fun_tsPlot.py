@@ -204,7 +204,7 @@ def plot_ts(df, mode, boreholes=None, borecats=None, year=None, average="median"
         seasonal mode only — enable interactive Gade anchor selection.
     """
     if mode == "month":
-        plot_ts_months(df, boreholes, months, year, average, regional, columns)
+        plot_ts_months(df, boreholes, borecats, months, year, average, regional, columns)
 
     elif mode == "seasonal":
         plot_ts_seasonal_wrapper(df, borecats, season_by_season, regional, year, average, allow_selection)
