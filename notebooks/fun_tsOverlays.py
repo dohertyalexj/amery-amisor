@@ -26,94 +26,6 @@ AVG_PRESSURES = {
 # Initialise a resuable dictionary keyed by cat and year (or average)
 GADE_ANCHORS = {}
 
-def get_gade_anchors(cat, plot_data, ax, fig, year=None, average="median"):
-    """Interactively select or retrieve saved Gade anchor points for this cat."""
-    key = (cat, year if year is not None else average)
-
-    # Ask the user if they would like to select an anchoring point for the meltwater mixing line interactively
-    response = input(f"Would you like to select a new meltwater mixing (Gade) line for cat{cat}? [y/n]: ").strip().lower()
-    
-    # Handle if the user response is negative
-    if response != "y":
-        # Return previously saved anchors or an empty list if none previously saved
-        return GADE_ANCHORS.get(key, [])
-    
-    # Initialise an empty list to add new selected anchoring points to
-    anchors = []
-
-    # Add an invisible pickable scatter on top of the data to make the approach a bit cleaner
-    sa = plot_data["absolute_salinity"].values
-    ct = plot_data["conservative_temperature"].values
-    picker_scatter = ax.scatter(sa, ct, picker=True, pickradius=10, alpha=0, zorder=10)
-    
-    # Define a mutable container to hold the selected points
-    selected = {"point": None}
-
-    def on_pick(event):
-        # Check click was on invisible scatter
-        if event.artist == picker_scatter:
-            # Find the index of the point clicked
-            idx = event.ind[0]
-            # Store data coordinates of clicked point
-            selected["point"] = (sa[idx], ct[idx])
-            # Break out of event loop
-            fig.canvas.stop_event_loop()
-
-    # Register on_pick as a callback
-    cid = fig.canvas.mpl_connect("pick_event", on_pick)
-    
-    # Define an inner helper function to retrieve the one click
-    def get_one_click(prompt):
-        # Reset the container before each click so that we know the user has actually something
-        selected["point"] = None
-        # Display the prompt for the user and redraw the plot 
-        print(prompt)
-        fig.canvas.draw_idle()
-        # Run matplotlib's event loop and block function (remains interactive)
-        fig.canvas.start_event_loop(timeout=-1) 
-        return selected["point"]
-    
-    # Prompt the user to make their first anchoring point selection
-    p1 = get_one_click("Click a data point for the first Gade anchor...")
-    if p1:
-        # Add the selected point to the list of new selected anchoring points
-        anchors.append(p1)
-        # Plot and redraw an open circle to show which point has been selected
-        ax.plot(*p1, "ko", markersize=10, mfc="none", mew=2)
-        fig.canvas.draw_idle()
-    
-    # Ask the user if they would like to make a second anchoring point selection
-    response2 = input(f"Select a second Gade line for cat{cat}? [y/n]: ").strip().lower()
-    if response2 == "y":
-        # Prompt the user to make their secibd anchoring point selection
-        p2 = get_one_click("Click a data point for the second Gade anchor...")
-        if p2:
-            anchors.append(p2)
-            ax.plot(*p2, "ko", markersize=10, mfc="none", mew=2)
-            fig.canvas.draw_idle()
-            
-    # Disconnects the callback
-    fig.canvas.mpl_disconnect(cid)
-
-    # Clean up the invisible picker scatter
-    picker_scatter.remove()
-    
-    GADE_ANCHORS[key] = anchors
-    return anchors
-
-# Define a function to take the (SA, CT) tuple of points just clicked and compare them to our dataset of actual (SA, CT) points
-def _snap_to_nearest(clicked_point, plot_data):
-    """Find the nearest actual data point to a clicked location."""
-    clicked_x, clicked_y = clicked_point
-    # Compute the Euclidean distance from the clicked point to every data point
-    # Distances is a pandas Series
-    distances = np.hypot(plot_data["absolute_salinity"] - clicked_x,plot_data["conservative_temperature"] - clicked_y)
-    # Find the index label in distances for the minimum distance value
-    nearest_idx = distances.idxmin()
-    # Look up the row for the nearest datapoint 
-    nearest = plot_data.loc[nearest_idx]
-    return (nearest["absolute_salinity"], nearest["conservative_temperature"])
-
 # Define a function to plot different overlays to aid in identifying and interpreting the source water masses
 def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selection=True, year=None, average="median"):
     # Define the range of temp and salinity over which we will plot these
@@ -164,12 +76,7 @@ def ts_plot_overlays(ax, fig, plot_data, cat, ylim_temp, xlim_sal, allow_selecti
     # ---------- 5. Meltwater (Gade) line — anchored at warmest/saltiest source water ----------
     # To anchor this meltwater mixing line, we want to anchor it to the warmest/saltiest water mass observed (meltwater modified ISW should freshen
     # and cool from this point, along the meltwater mixing line)
-    # First we check if we will be allowing a new selection to occur in this function call, if not, we see if there is a previously
-    # anchor available to use
-    if allow_selection and len(cats) == 1:
-        # Interactive choose anchoring point(s)
-        anchors = get_gade_anchors(cats[0], plot_data, ax, fig, year=year)
-    elif len(cats) == 1:
+    if len(cats) == 1:
         key_single = (cats[0], year if year is not None else average)
         anchors = GADE_ANCHORS.get(key_single, [])
     else:
