@@ -7,3 +7,22 @@
 
 # Stupid Mac files
 .DS_Store
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Jupyter autosaves
+.ipynb_checkpoints/
+
+# processed data
+*.parquet
+
+# figure outputs
+*.png
+*.svg
+*.pdf
+
+data/proc/
+notebooks/figures/
+notebooks/superseded/
+data/external/melt_rate/
